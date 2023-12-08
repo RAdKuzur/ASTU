@@ -1,0 +1,167 @@
+import math
+###обработка однобуквенного сообщения
+
+string = input()
+
+m = len(string)
+def H(list, m):
+    answer = 0
+    for i in range(len(list)):
+        answer = answer - (list[i][0] / m)* math.log2(list[i][0] / m)
+    return answer
+
+list0 = []
+for i in range(len(string)):
+    list0.append((0,(string[i])))
+list2 = []
+for i in range(len(list0)):
+    list2.append((list0.count(list0[i]), list0[i][1]))
+list3 = []
+for item in list2:
+    if item not in list3:
+       list3.append(item)
+list3.sort(key = lambda x: x[0])
+for i in range(len(list3)):
+    print(list3[i][1] , " : ", list3[i][0] , "     p =  ", list3[i][0]/len(string) )
+print(" \n ----- \n ----- \n ----- \n")
+m_1 = len(list3)
+H_1 = H(list3, m)
+###обработка двубуквенного сообщения
+list9 = list3
+
+list0 = []
+for i in range(len(string) - 1):
+    list0.append((0,(string[i] + string[i+1])))
+list0.append((0, string[0] + string[len(string)-1]))
+list2 = []
+for i in range(len(list0)):
+    list2.append((list0.count(list0[i]), list0[i][1]))
+list3 = []
+for item in list2:
+    if item not in list3:
+       list3.append(item)
+list3.sort(key = lambda x: x[0])
+for i in range(len(list3)):
+    print(list3[i][1] , " : ", list3[i][0] , "     p =  ", list3[i][0]/len(string))
+H_2 = H(list3, m)
+m_2 = len(list3)
+###  расчёты
+
+print(" \n ----- \n ----- \n ----- \n")
+
+print("H1 = ", H_1 , "\nH2 = ", H_2)
+print("H(Y|X) = ", H_2 - H_1, "\nI = ", 2 * H_1 - H_2 )
+print("m = ", m_1 ,"   l = ", math.ceil(math.log2(m_1)),  "    D0 = ", 1 - math.log2(m_1)/math.ceil(math.log2(m_1)) )
+print("Dp = ", 1 - H_1/math.log2(m_1)  , "    Ds = ", 1 - (H_2 - H_1)/H_1  , "\nD = " , (1 - H_1/math.log2(m_1)) +  (1 - (H_2 - H_1)/H_1) -  (1 - H_1/math.log2(m_1)) * (1 - (H_2 - H_1)/H_1))
+print("==============================")
+print("Лабораторная работа 3")
+
+Code = []
+text = string
+d = {}
+for i in text:
+    if i not in '!—,.-?...()—:;«»\nъь':
+        d[i] = d.get(i, 0) + 1
+sum_sim = sum(d.values())
+for i in d:
+    d[i] = round(d[i] / sum_sim, 3)
+d = sorted(d.items(), key=lambda x: x[1], reverse=True)
+arr = []
+for i in d:
+    arr.append(list(i) + [''])
+
+
+def func(arr):
+    half = sum(map(lambda x: x[1], arr))
+    sum1 = 0
+    for i, j in enumerate(arr):
+        sum1 += j[1]
+        if sum1 * 2 >= half:
+            index = i + (abs(2 * sum1 - half) < abs(2 * (sum1 - j[1]) - half))
+            break
+
+    arr0, arr1 = [], []
+    for i in arr[:index]:
+        i[2] += '0'
+        arr0.append(i)
+    for i in arr[index:]:
+        i[2] += '1'
+        arr1.append(i)
+
+    if len(arr1) == 1:
+        Code.append(arr1)
+    else:
+        func(arr1)
+    if len(arr0) == 1:
+        Code.append(arr0)
+    else:
+        func(arr0)
+func(arr)
+print('\nКод Шеннона-Фано: \n')
+for i in Code:
+    print(i)
+length = 0
+for i in range(len(Code)):
+    length = length + Code[i][0][1]*len(Code[i][0][2])
+print("Средняя длина = ", length)
+print("Эффективность = ", H_1/length )
+print("Код Хаффмана")
+import heapq  # модуль для работы с мин. кучей из стандартной библиотеки Python
+from collections import Counter  # словарь в котором для каждого объекта поддерживается счетчик
+from collections import namedtuple
+
+# добавим классы для хранения информации о структуре дерева
+# воспользуемся функцией namedtuple из стандартной библиотеки
+class Node(namedtuple("Node", ["left", "right"])):  # класс для ветвей дерева - внутренних узлов; у них есть потомки
+    def walk(self, code, acc):
+        # чтобы обойти дерево нам нужно:
+        self.left.walk(code, acc + "0")  # пойти в левого потомка, добавив к префиксу "0"
+        self.right.walk(code, acc + "1")  # затем пойти в правого потомка, добавив к префиксу "1"
+
+class Leaf(namedtuple("Leaf", ["char"])):  # класс для листьев дерева, у него нет потомков, но есть значение символа
+    def walk(self, code, acc):
+        # потомков у листа нет, по этому для значения мы запишем построенный код для данного символа
+        code[self.char] = acc or "0"  # если строка длиной 1 то acc = "", для этого случая установим значение acc = "0"
+
+def huffman_encode(s):  # функция кодирования строки в коды Хаффмана
+    h = []  # инициализируем очередь с приоритетами
+    for ch, freq in Counter(s).items(): # постоим очередь с помощью цикла, добавив счетчик, уникальный для всех листьев
+        h.append((freq, len(h), Leaf(ch)))  # очередь будет представлена частотой символа, счетчиком и самим символом
+    heapq.heapify(h)  # построим очередь с приоритетами
+    count = len(h) # инициализируем значение счетчика длиной очереди
+    while len(h) > 1:  # пока в очереди есть хотя бы 2 элемента
+        freq1, _count1, left = heapq.heappop(h)  # вытащим элемент с минимальной частотой - левый узел
+        freq2, _count2, right = heapq.heappop(h)  # вытащим следующий элемент с минимальной частотой - правый узел
+        # поместим в очередь новый элемент, у которого частота равна суме частот вытащенных элементов
+        heapq.heappush(h, (freq1 + freq2, count, Node(left, right))) # добавим новый внутренний узел у которого
+                                                                     # потомки left и right соответственно
+        count += 1  # инкрементируем значение счетчика при добавлении нового элемента дерева
+    code = {}  # инициализируем словарь кодов символов
+    if h:  # если строка пустая, то очередь будет пустая и обходить нечего
+        [(_freq, _count, root)] = h  # в очереди 1 элемент, приоритет которого не важен, а сам элемент - корень дерева
+        root.walk(code, "")  # обойдем дерева от корня и заполним словарь для получения кодирования Хаффмана
+    return code  # возвращаем словарь символов и соответствующих им кодов
+
+def main():
+    s = string  # читаем строку длиной  до 10**4
+    code = huffman_encode(s)  # кодируем строку
+    encoded = "".join(code[ch] for ch in s)  # отобразим закодированную версию, отобразив каждый символ
+                                             # в соответствующий код и конкатенируем результат
+    #print(len(code), len(encoded))  # выведем число символов и длину закодированной строки
+    i = 0
+    t = 0
+    length = 0
+    for ch in sorted(code): # обойдем символы в словаре в алфавитном порядке с помощью функции sorted()
+        print("{}: {}".format(ch, code[ch]),  "   p = ",  list9[i][0]/len(string) )  # выведем символ и соответствующий ему код
+        length = length + len(code[ch])*list9[i][0]/len(string)
+
+        i = i+1
+
+
+    print("Средняя длина = ", length)
+    print("Эффективность = ", H_1 / length)
+
+if __name__ == "__main__":
+    main()
+
+

@@ -1,0 +1,87 @@
+import numpy as np
+import math
+import random
+s = input()
+s1 = np.full(len(s), 0)
+
+k = len(s)
+for i in range(k):
+	if s[i] == '0':
+		s1[i] = 0
+	else:
+		s1[i] = 1
+r = math.ceil(math.log2(k + 1 + math.log2(k+1)))
+n = k + r
+H = np.full((r ,n), 0)
+A =  np.full((r , k), 0)
+for i in range(r):
+	for t in range(k):
+		A[i][t] = s[t]
+zero = np.full(r, 0)
+for i in range(r):
+	H[i][i + k] = 1
+condition = 1
+while condition > 0:
+	condition = 0
+	for t in range(k):
+		for i in range(r):
+			H[i][t] = random.randint(0,1)
+	for i in range(k+r):
+		for t in range(k+r):
+			if not(np.array_equal(H[:,i], H[:,t])) and t!=k and  not(np.array_equal(zero, H[:, t])):
+				condition = condition + 1
+	#print(H, condition)
+	if condition == (k+r-1)*(k+r-1):
+		condition = 0
+for t in range(k):
+	for i in range(r):
+		A[i][t] = H[i][t]
+
+print("s = ", s )
+print("k = ", k , "   ", "r = ", r, "    n = ", n)
+print(" А = \n" ,A)
+print(" H = \n", H)
+AT = A.T
+G =  np.full((k , n), 0)
+for i in range(k):
+	G[i][i] = 1
+for i in range(k):
+	for t in range(r):
+		G[i][t+k] = AT[i][t]
+print(" G = \n", G)
+
+B = np.dot(s1, G)
+B = np.mod(B, 2)
+print("B = " , B)
+s = np.dot(B , H.T)
+s = np.mod(s,2)
+print("s = ", s)
+
+print("Внесите ошибку: b = ")
+str = input()
+str1 = np.full(len(str), 0)
+k = len(str1)
+for i in range(k):
+	if str[i] == '0':
+		str1[i] = 0
+	else:
+		str1[i] = 1
+print("b = ", str1)
+s2 = np.dot(str1 , H.T)
+s2 = np.mod(s2,2)
+print("s = ", s2)
+i = 0
+for i in range(n):
+	print(H[:,i])
+
+
+
+for i in range(n):
+	condition = 0
+	for t in range(r):
+		if s2[t] == H[t][i]:
+			condition = condition + 1
+	if condition == r:
+		print("Ошибка в ", i+1 , " разряде")
+		break;
+

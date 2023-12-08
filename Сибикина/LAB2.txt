@@ -1,0 +1,54 @@
+import math
+###обработка однобуквенного сообщения
+
+string = input()
+
+m = len(string)
+def H(list, m):
+    answer = 0
+    for i in range(len(list)):
+        answer = answer - (list[i][0] / m)* math.log2(list[i][0] / m)
+    return answer
+
+list = []
+for i in range(len(string)):
+    list.append((0,(string[i])))
+list2 = []
+for i in range(len(list)):
+    list2.append((list.count(list[i]), list[i][1]))
+list3 = []
+for item in list2:
+    if item not in list3:
+       list3.append(item)
+list3.sort(key = lambda x: x[0])
+for i in range(len(list3)):
+    print(list3[i][1] , " : ", list3[i][0] , "     p =  ", list3[i][0]/len(string) )
+print(" \n ----- \n ----- \n ----- \n")
+m_1 = len(list3)
+H_1 = H(list3, m)
+###обработка двубуквенного сообщения
+
+list = []
+for i in range(len(string) - 1):
+    list.append((0,(string[i] + string[i+1])))
+list.append((0, string[0] + string[len(string)-1]))
+list2 = []
+for i in range(len(list)):
+    list2.append((list.count(list[i]), list[i][1]))
+list3 = []
+for item in list2:
+    if item not in list3:
+       list3.append(item)
+list3.sort(key = lambda x: x[0])
+for i in range(len(list3)):
+    print(list3[i][1] , " : ", list3[i][0] , "     p =  ", list3[i][0]/len(string))
+H_2 = H(list3, m)
+m_2 = len(list3)
+###  расчёты
+
+print(" \n ----- \n ----- \n ----- \n")
+
+print("H1 = ", H_1 , "\nH2 = ", H_2)
+print("H(Y|X) = ", H_2 - H_1, "\nI = ", 2 * H_1 - H_2 )
+print("m = ", m_1 ,"   l = ", math.ceil(math.log2(m_1)),  "    D0 = ", 1 - math.log2(m_1)/math.ceil(math.log2(m_1)) )
+print("Dp = ", 1 - H_1/math.log2(m_1)  , "    Ds = ", 1 - (H_2 - H_1)/H_1  , "\nD = " , (1 - H_1/math.log2(m_1)) +  (1 - (H_2 - H_1)/H_1) -  (1 - H_1/math.log2(m_1)) * (1 - (H_2 - H_1)/H_1))

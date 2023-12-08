@@ -1,0 +1,120 @@
+import math
+from matplotlib import pyplot as plt
+#first solution
+print("solution #1: Input n")
+n = int(input())
+def C(k,n):
+    return math.factorial(n)/(math.factorial(k)*math.factorial(n-k))
+def pi(n,m,p):
+    return p**m * (1-p)**(n-m)*C(m,n)
+def H_1(n, p):
+    answer = 0
+    if (p != 0):
+        for i in range(n+1):
+            answer = answer - pi(n,i,p)*math.log2(pi(n,i,p))
+        return answer
+    else:
+        return 0
+i = 0
+k = 0
+p = 0
+x_1=[]
+y_1=[]
+x_1.append(0)
+y_1.append(0)
+for i in range(11):
+    for t in range(n+1):
+        if (i!= 0 and i!=10):
+            print("p = ",p,"     ", t ," : ",  pi(n,t,p),"     ", H_1(n,p),"\n")
+    if (i != 0 and i != 10):
+        x_1.append(p)
+        y_1.append(H_1(n,p))
+
+    p = round(p + 1/10, 2)
+x_1.append(1)
+y_1.append(0)
+plt.plot(x_1,y_1)
+plt.show()
+
+
+
+
+
+#second solution
+print("solution #2: Input n")
+#n = int(input())
+x_2=[]
+y_2=[]
+x_2.append(0)
+y_2.append(0)
+def pi_2(m,p):
+    return (p**(m-1))*(1-p)
+def H_2(n,p):
+    answer = 0
+    for i in range(1,n+1):
+        answer = answer - pi_2(i,p)*math.log2(pi_2(i,p))
+    return answer
+i = 0
+k = 0
+p = 0.0
+def counter(p):
+    n = 1
+    h = 0
+    k = 0
+    while abs(1 - k) > 0.001:
+        h = 0
+        for i in range(1,n+1):
+            h = h + pi_2(i,p)
+        n = n + 1
+        k = h
+    n = n - 1
+    return n
+
+
+
+
+for i in range(11):
+    for t in range(1,n+1):
+        if (i!=0 and i!=10):
+            print("p = ",p,"     ", t ," : ", pi_2(t,p) ,"     ", H_2(n,p), "\n")
+    if (i != 0 and i != 10):
+        x_2.append(p)
+        y_2.append(H_2(n, p))
+    p = round(p + 1/10, 2)
+    if p < 1:
+        n = counter(p)
+x_2.append(1)
+y_2.append(0)
+plt.plot(x_2,y_2)
+plt.show()
+
+
+
+
+
+#third solution
+print("solution #3: Input n")
+n = int(input())
+print("solution #3: Input m")
+m = int(input())
+x_3=[]
+y_3=[]
+x_3.append(0)
+y_3.append(0)
+def pi_3(i,m,k,n):
+    return (C(i,k)*C(m-i,n-k))/C(m,n)
+def H_3(k):
+    answer = 0
+    for i in range(0,n):
+        if (k >= i and i <= m and k <= n and m - i <= n - k):
+            answer = answer - pi_3(i,m,k,n)*math.log2(pi_3(i,m,k,n))
+    return answer
+for k in range(0,n+1):
+    for i in range(0,n):
+        if(k>=i and i<=m and k<=n and m-i <= n-k):
+            print("k = ",k,"     ", i ," : ", pi_3(i,m,k,n) ,"     ", H_3(k), "\n")
+    x_3.append(k)
+    y_3.append(H_3(k))
+plt.plot(x_3,y_3)
+plt.show()
+
