@@ -17,7 +17,7 @@ def divide_bin(a,b):
         b_10 = int(b,2)     
         if(n[0]!='0'):
             str_10 = n_10^b_10
-          #  print(n_10, "  ", b_10, "  ", str_10)
+            #print(n_10, "  ", b_10, "  ", str_10)
             str = binar(str_10)
             while(len(str) < len(b)):
                 str = '0' + str
@@ -32,7 +32,7 @@ def divide_bin(a,b):
                         k = k + k_double[t]
                 else:
                     continue
-         #   print(n, " ", b, " " ,str ," ",k)
+            #print(n, " ", b, " " ,str ," ",k)
             k_double = ''
     return k
 def stab(a,length):
