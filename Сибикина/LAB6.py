@@ -44,88 +44,89 @@ def left_rotate_string(s, n):
 def right_rotate_string(s, n):
     n = n % len(s) 
     return s[-n:] + s[:-n]
-def NOK(a, b):
-    m = a * b
-    while a != 0 and b != 0:
-        if a > b:
-            a %= b
-        else:
-            b %= a
-    return m // (a + b)
- 
+def xor_two_str(a,b):
+    xored = []
+    for i in range(max(len(a), len(b))):
+        xored_value = ord(a[i%len(a)]) ^ ord(b[i%len(b)])
+        xored.append(hex(xored_value)[2:])
+    return ''.join(xored)
+def NOK(p, length):
+    a = p[0]
+    answer = a
+    if (length>1):
+        for i in range(length-1):
+            b = p[i+1]
+            for t in range(len(b)-1):
+                mnozh = a + '0'*(t+1)
+                print(a, mnozh, binar(int(answer,2)^int(mnozh,2)))
+                answer = binar(int(answer,2)^int(mnozh,2))
+            a = answer
+    return a
+def amount_one(p):
+    n = 0
+    for i in range(len(p)):
+        if(p[i] == '1'):
+            n = n + 1
+    return n
 print("Лаба шестая. Коды БЧХ\n")
-print("Введите a = ")
-#a = input()
-a = "10011"
+print("Введите a")
+a = input()
 k = len(a)
-print("Введите s = ")
-#s = input()
-
-s = 3
-print("Введите m = ")
-#m = input()
-m = 2
-#n = []
-n = 15
-h = math.log2(n+1)
-P = []
+#соотношение корректирующих и информационных разрядов для БЧХ кодов: n k r s
+array_of_indexes = [
+    [7, 4, 3, 1], 
+    [15, 5, 10, 3], 
+    [31, 6, 25, 7],
+    [63, 7, 56, 15],
+    ]
+for i in range(len(array_of_indexes)):
+    if(array_of_indexes[i][1] == k):
+        n = array_of_indexes[i][0]
+        r = array_of_indexes[i][2]
+        s = array_of_indexes[i][3]
+h = int(math.log2(n+1))
 i = 2*s-1
-P = [[],[],[],["10011","11111","111"],[],[],[],[],[]]
-index = 0
-index_2 = 0  
-p1_10 = int(P[3][index_2],2)
-while index < i - 1:
-    p2_10 = int(P[3][index_2+1],2)
-    index = index + 2
-    #print(index_2, P[3][index_2+1])
-    index_2 = index_2 + 1
-    
-    p1_10 = NOK(p1_10,p2_10)
-p1 = binar(p1_10)
-p1 = "10100110111"
-r = len(p1)
-#print(r)
-
-rp = "1"
-for t in range(r-1):
-    rp = rp + '0'
-#rp = "10000000000"
-rp_10 = int(rp,2)
-a_10 = int(a,2)
-af_10 = a_10*rp_10
-af = binar(af_10) 
-#print(af)
-#af = "100110000000000" #поменять
-res = divide_bin(af, p1)
-#print(res)
-length = max(len(af),len(res))
-b_10 = int(res,2 )| int(af,2)
-b = binar(b_10)
-while len(b)<length:
-    b = '0'+b
-print("b = ", b)
-###################
-print("хотите внести ошибку?\n")
-
-#b_error = input()
-b_error = "111110111000010"
+    #МНОГОЧЛЕНЫ В В ПОЛЕ ГАЛУА
+P = [
+    [],
+    ['111'],
+    ['1011','1101'],
+    ['10011','11111', '111', '11001'],
+    ['100101', '111101', '110111', '101111', '110111', '111011'],
+    ['1000011', '1010111', '1100111', '1001001', '1101', '1101101'],
+    [],
+    [],
+    []
+    ]
+print("Информационное сообщение          a = ", a)
+print("Число информационных символов     k = ", k)
+print("Поле Галуа                        h = ", h)
+print("Степень                           i = ", i)
+print("Число корректирующих символов     r = ", r)
+print("Число исправляемых символов       s = ", s)
+g_x = NOK(P[h-1], len(P[h-1])-1)
+print("Образующий многочлен              g = ", g_x)
+a = a + (r)*'0'
+print(a, ' % ', g_x, ' = ', divide_bin(a, g_x))
+b = binar(int(a,2)^int(divide_bin(a, g_x),2))
+while n > len(b):
+    b = '0' + b
+print("Итоговая комбинация               b = ", b)
+print("внесем ошибку b_error")
+b_error = input()
 print("b =                      " , b)
 print("b_error =                " , b_error)
-#print(left_rotate_string(b_error,1))
-ost = divide_bin(b_error, p1)
 amount_shift = 0
-while(int(ost,2) > s):
+ostatok = divide_bin(b_error, g_x)
+print(b_error, ' % ', g_x, ' = ', ostatok)
+while(amount_one(binar(int(ostatok, 2))) > s):
     b_error = left_rotate_string(b_error,1)
-    ost = divide_bin(b_error, p1)
+    ostatok = divide_bin(b_error, g_x)
+    print(b_error, ' % ', g_x, ' = ', ostatok)
     amount_shift = amount_shift + 1
-    #print("                         ",ost)
-
-b_error_int= int(b_error,2) ^ int(ost,2)
+b_error_int= int(b_error,2) ^ int(ostatok,2)
 b_error = binar(b_error_int)
-while(len(b_error)< k+r-1):
+while(len(b_error) < len(b)):
     b_error = '0' + b_error
-b_error = right_rotate_string(b_error,amount_shift)
-if(amount_shift == 0):
-    print("ошибок нет")
-else:
-    print ("Исправленная комбинация: ", b_error)
+b_error = right_rotate_string(b_error, amount_shift)
+print ("Исправленная комбинация: ", b_error)
