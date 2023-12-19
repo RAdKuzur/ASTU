@@ -114,6 +114,7 @@ while n > len(b):
 print("Итоговая комбинация               b = ", b)
 print("внесем ошибку b_error")
 b_error = input()
+b_error_2 = b_error
 print("b =                      " , b)
 print("b_error =                " , b_error)
 amount_shift = 0
@@ -129,4 +130,8 @@ b_error = binar(b_error_int)
 while(len(b_error) < len(b)):
     b_error = '0' + b_error
 b_error = right_rotate_string(b_error, amount_shift)
-print ("Исправленная комбинация: ", b_error)
+print("Начальная комбинация:     ", b_error_2)
+print("Исправленная комбинация:  ", b_error)
+for i in range(len(b_error)):
+    if(b_error[i] != b_error_2[i]):
+        print("Ошибка в ", i + 1, " разряде")
