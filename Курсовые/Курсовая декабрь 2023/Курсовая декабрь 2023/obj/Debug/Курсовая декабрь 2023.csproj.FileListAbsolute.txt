@@ -1,0 +1,15 @@
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\bin\Debug\Курсовая декабрь 2023.exe.config
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\bin\Debug\Курсовая декабрь 2023.exe
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\bin\Debug\Курсовая декабрь 2023.pdb
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая декабрь 2023.csproj.AssemblyReference.cache
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая декабрь 2023.csproj.SuggestedBindingRedirects.cache
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая_декабрь_2023.Form1.resources
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая_декабрь_2023.Properties.Resources.resources
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая декабрь 2023.csproj.GenerateResource.cache
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая декабрь 2023.csproj.CoreCompileInputs.cache
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая декабрь 2023.exe
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая декабрь 2023.pdb
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая_декабрь_2023.Form2.resources
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая_декабрь_2023.Form3.resources
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая_декабрь_2023.Form4.resources
+C:\Users\Hp\source\repos\Курсовая декабрь 2023\Курсовая декабрь 2023\obj\Debug\Курсовая_декабрь_2023.Form5.resources
