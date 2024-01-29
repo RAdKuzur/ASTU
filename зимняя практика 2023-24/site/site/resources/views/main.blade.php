@@ -10,10 +10,10 @@
     <title>Авторизация</title>
     </head>
     <body id = "body-1">    
-        <header id= "header">
+        <header id= "header"> 
             <div id = "head">
                 <img src="/img/bus3.jpg" alt="Логотип" id = "image-1">
-                <span id="nav">
+                <div id="nav">
                     <span class = "panel">Главная</span>
                     <span class = "panel">О нас</span>
                     <span class = "panel">Услуги</span>
@@ -22,7 +22,7 @@
                     <span class = "panel">Зарегистрироваться</span>
 
 
-                </span>
+                </div>
             </div>
         </header>
         <div class = "form-auth">
