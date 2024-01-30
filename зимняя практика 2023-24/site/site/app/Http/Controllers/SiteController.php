@@ -17,12 +17,13 @@ use App\Http\Controllers\Controller;
 
 class SiteController extends Controller
 {
-    public function main(){
-       // DB::table('test_models')->insert(['name' => 'Ivan', 'number' => 5]);
-        return view('main');
-
+    public function register_show(){
+       
+        return view('register');
     }
-
+    public function main_show(){
+        return view('main');
+    }
 
     //
 }

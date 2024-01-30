@@ -16,8 +16,8 @@ use App\Http\Controllers\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/main',  [SiteController::class, 'main'])->name('main');
-
+Route::get('/register',  [SiteController::class, 'register_show'])->name('register');
+Route::get('/main',  [SiteController::class, 'main_show'])->name('main');
 Route::get('/', function () {
     return view('welcome');
 });
