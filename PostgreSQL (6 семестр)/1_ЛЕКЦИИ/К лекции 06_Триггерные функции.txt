@@ -1,0 +1,38 @@
+-- CREATE TABLE test_table ( id integer, txt text, modified timestamp with time zone DEFAULT now() ); 
+/*
+CREATE OR REPLACE FUNCTION date_insert() RETURNS TRIGGER AS $$ 
+BEGIN 
+    IF EXISTS ( SELECT id FROM test_table WHERE id = NEW.id AND txt = NEW.txt) THEN   
+        UPDATE test_table SET modified = now() WHERE id = NEW.id AND txt = NEW.txt AND modified < now(); 
+       RETURN NULL; 
+    END IF;
+    RETURN NEW; 
+END; 
+$$ LANGUAGE plpgsql; 
+*/
+
+/*
+DROP TRIGGER IF EXISTS on_date_insert ON test_table; 
+CREATE TRIGGER on_date_insert BEFORE INSERT ON test_table 
+     FOR EACH ROW 
+     EXECUTE PROCEDURE date_insert(); 
+*/
+    
+/*
+CREATE OR REPLACE FUNCTION date_update() RETURNS TRIGGER AS $$ 
+BEGIN 
+     NEW.modified = now(); 
+     RETURN NEW; 
+END; 
+$$ LANGUAGE plpgsql; 
+*/
+
+/*
+DROP TRIGGER IF EXISTS on_date_update ON test_table; 
+CREATE TRIGGER on_date_update BEFORE UPDATE ON test_table 
+     FOR EACH ROW 
+     EXECUTE PROCEDURE date_update();
+*/
+
+-- INSERT INTO "test_table" VALUES(1, 'Строка');
+-- DROP FUNCTION date_insert()  CASCADE;

@@ -1,0 +1,33 @@
+--Генерация случайных дат (время одно и то же):
+select now()-INTERVAL '1 day' * round(random()*100)
+from generate_series(1,10);
+
+--Генерация случайных дат и времени:
+select now()-INTERVAL '1 day' * round(random()*467)
+- INTERVAL '1 hour' * round(random()*100)
+- INTERVAL '1 min' * round(random()*100)
+from generate_series(1,10);
+
+-- Генерация случайного числа от 0 до 1 (тип double)
+select random();
+
+-- Получить символ по его коду (1040 - А, 1071 - Я, 1072 - а, 1103 - я):
+select chr(1040);
+
+-- Получить код символа:
+select ascii('А');
+
+--Получить случайный символ от А до Я:
+select chr((1040+ random()*33):: integer);
+
+
+
+
+
+
+
+
+--samoychiteli.ru/document29717.html - Иллюстрированный самоучитель по PostgreSQL
+-- www.user.su/sql/index/php?id=28 - Postgres: Генерация случайной строки
+
+
