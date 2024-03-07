@@ -1,0 +1,11 @@
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\bin\Debug\LAB_1_SADCHIKOV.exe.config
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\bin\Debug\LAB_1_SADCHIKOV.exe
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\bin\Debug\LAB_1_SADCHIKOV.pdb
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.csproj.AssemblyReference.cache
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.csproj.SuggestedBindingRedirects.cache
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.Form1.resources
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.Properties.Resources.resources
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.csproj.GenerateResource.cache
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.csproj.CoreCompileInputs.cache
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.exe
+C:\Users\Hp\source\repos\LAB_1_SADCHIKOV\LAB_1_SADCHIKOV\obj\Debug\LAB_1_SADCHIKOV.pdb
