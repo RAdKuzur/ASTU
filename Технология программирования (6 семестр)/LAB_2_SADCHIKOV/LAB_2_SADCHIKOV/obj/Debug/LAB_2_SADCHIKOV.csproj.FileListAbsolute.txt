@@ -9,3 +9,14 @@ C:\Users\Hp\source\repos\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIK
 C:\Users\Hp\source\repos\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.csproj.CoreCompileInputs.cache
 C:\Users\Hp\source\repos\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.exe
 C:\Users\Hp\source\repos\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.pdb
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\bin\Debug\LAB_2_SADCHIKOV.exe.config
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\bin\Debug\LAB_2_SADCHIKOV.exe
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\bin\Debug\LAB_2_SADCHIKOV.pdb
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.csproj.AssemblyReference.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.csproj.SuggestedBindingRedirects.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.Form1.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.Properties.Resources.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.csproj.GenerateResource.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.exe
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_2_SADCHIKOV\LAB_2_SADCHIKOV\obj\Debug\LAB_2_SADCHIKOV.pdb

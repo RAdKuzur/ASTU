@@ -47,7 +47,10 @@ namespace LAB_2_SADCHIKOV
         {
             Start = false;
             label1.Text = "00:00:00:00";
-
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            flag = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
