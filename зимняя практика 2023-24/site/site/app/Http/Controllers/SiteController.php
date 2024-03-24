@@ -50,10 +50,13 @@ class SiteController extends Controller
     public function booking(){
         return view('booking');
     }
+    public function booking_post(Request $request){
+        return dd($request);
+    } 
     public function cancelling(){
         return view('cancelling');
     }
-    public function booking_post(Request $request){
+    public function cancelling_post(Request $request){
         return dd($request);
     }
     //

@@ -35,6 +35,9 @@ Route::get('/purchase/booking',  [SiteController::class, 'booking'])->name('book
 Route::post('/purchase/booking',  [SiteController::class, 'booking_post'])->name('booking_post');
 
 Route::get('/purchase/cancelling',  [SiteController::class, 'cancelling'])->name('cancelling');
+Route::post('/purchase/cancelling',  [SiteController::class, 'cancelling_post'])->name('cancelling_post');
+
+
 
 Route::get('/', function () {
     return redirect("main");

@@ -25,11 +25,5 @@
         </header>
         <a href="purchase/booking" class = "ref-2" text-decoration="none"><div id = "div-button-1"><h2 class="ref-1">Забронировать билеты</h2></div></a>
         <a href="purchase/cancelling" class = "ref-2" text-decoration="none"><div id = "div-button-1"><h2 class="ref-1">Отменить бронирование</h2></div></a>
-
-
-
-
-
-
     </body>
 </html>

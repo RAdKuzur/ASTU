@@ -23,5 +23,28 @@
                 </div>
             </div>
         </header>
+        <div id = "div-button-4"><h4 id = "title-2">Отмена бронирования</h4>
+            <form action = "{{route('cancelling')}}" method="POST">
+                @csrf
+                <div id = "cancelling-1">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Код бронирования</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "booking_code">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Код безопасности</label>
+                        <input type="text" class="form-control" id="exampleInputPassword1" name = "secuirity_code">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id = "button_cancel-1">Отменить бронирования</button>
+            </form>
+        
+        
+        
+        </div>
+
+
+
+
     </body>
 </html>
