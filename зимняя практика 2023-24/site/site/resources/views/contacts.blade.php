@@ -7,7 +7,7 @@
         <link rel = "stylesheet" type="text/css" href="../css/bootstrap.css">
         <link rel = "stylesheet" type="text/css" href="../css/main.css">
         <link rel="shortcut icon" href="/img/bus.png" type="image/png"> 
-    <title>Вход в систему</title>
+    <title>Контакты</title>
     </head>
     <body id = "body-1">    
         <header id= "header"> 
@@ -20,26 +20,36 @@
                     <span class = "panel">Контакты</span>
                     <span class = "panel">Войти</span>
                     <span class = "panel">Зарегистрироваться</span>
-
-
                 </div>
             </div>
         </header>
-        <div class = "form-auth">
-            <h3 id = "text-1">Вход в систему</h3>
-        <form action = "{{route('login')}}" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = "email">
+        <div id = "div-1">
+            <div id = "div-2">
+                <h1>Контактная информация</h1></br>
+                <h3>Почта:</h3>mail@mail.ru</br>
+                <h3>Контактный телефон:</h3>+7-777-777-77-77</br>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name = "password">
+            <form action = "{{route('contacts')}}" method="POST">
+                @csrf
+            <div id = "div-3">
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea0" class="form-label">Напишите ваше имя</label>
+                    <input class="form-control" id="exampleFormControlTextarea0" rows="3" name = "name"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Напишите ваш отзыв</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить отзыв</button>
             </div>
-            <button type="submit" class="btn btn-primary">Войти</button>
-        </form>
+            </form>
+
+
+
+
         </div>
+
+
 
     </body>
 </html>

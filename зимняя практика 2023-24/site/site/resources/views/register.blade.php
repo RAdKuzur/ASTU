@@ -15,13 +15,11 @@
                 <img src="/img/bus3.jpg" alt="Логотип" id = "image-1">
                 <div id="nav">
                     <span class = "panel">Главная</span>
-                    <span class = "panel">О нас</span>
+                    <span class = "panel">Для сотрудников</span>
                     <span class = "panel">Услуги</span>
                     <span class = "panel">Контакты</span>
                     <span class = "panel">Войти</span>
                     <span class = "panel">Зарегистрироваться</span>
-
-
                 </div>
             </div>
         </header>

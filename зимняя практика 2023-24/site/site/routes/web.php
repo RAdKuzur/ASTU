@@ -20,12 +20,22 @@ use App\Http\Controllers\SiteController;
 Route::get('/login',  [SiteController::class, 'login_show'])->name('login');
 Route::post('/login',  [SiteController::class, 'login_post'])->name('login_post');
 
-
-
 Route::get('/register',  [SiteController::class, 'register_show'])->name('register');
 Route::post('/register',  [SiteController::class, 'register_post'])->name('register_post');
 
 Route::get('/main',  [SiteController::class, 'main_show'])->name('main');
+
+Route::get('/contacts',  [SiteController::class, 'contacts'])->name('contacts');
+Route::post('/contacts',  [SiteController::class, 'contacts_post'])->name('contacts_post');
+
+
+Route::get('/purchase',  [SiteController::class, 'purchase'])->name('purchase');
+
+Route::get('/purchase/booking',  [SiteController::class, 'booking'])->name('booking');
+Route::post('/purchase/booking',  [SiteController::class, 'booking_post'])->name('booking_post');
+
+Route::get('/purchase/cancelling',  [SiteController::class, 'cancelling'])->name('cancelling');
+
 Route::get('/', function () {
     return redirect("main");
 });

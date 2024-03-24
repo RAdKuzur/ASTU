@@ -26,8 +26,6 @@ class SiteController extends Controller
        
         return dd($request);
     }
-    
-
     public function register_show(){
        
         return view('register');
@@ -40,6 +38,23 @@ class SiteController extends Controller
     public function main_show(){
         return view('main');
     }
-
+    public function contacts(){
+        return view('contacts');
+    }
+    public function contacts_post(Request $request){
+        return dd($request);
+    }
+    public function purchase(){
+        return view('purchase');
+    }
+    public function booking(){
+        return view('booking');
+    }
+    public function cancelling(){
+        return view('cancelling');
+    }
+    public function booking_post(Request $request){
+        return dd($request);
+    }
     //
 }
