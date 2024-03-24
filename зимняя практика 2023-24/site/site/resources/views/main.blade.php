@@ -7,7 +7,7 @@
         <link rel = "stylesheet" type="text/css" href="../css/bootstrap.css">
         <link rel = "stylesheet" type="text/css" href="../css/main.css">
         <link rel="shortcut icon" href="/img/bus.png" type="image/png"> 
-    <title>Авторизация</title>
+    <title>Главная страница</title>
     </head>
     <body id = "body-2">    
         <header id= "header"> 

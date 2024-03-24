@@ -7,7 +7,7 @@
         <link rel = "stylesheet" type="text/css" href="../css/bootstrap.css">
         <link rel = "stylesheet" type="text/css" href="../css/main.css">
         <link rel="shortcut icon" href="/img/bus.png" type="image/png"> 
-    <title>Регистрация</title>
+    <title>Вход в систему</title>
     </head>
     <body id = "body-1">    
         <header id= "header"> 
@@ -26,8 +26,8 @@
             </div>
         </header>
         <div class = "form-auth">
-            <h3 id = "text-1">Регистрация</h3>
-        <form action = "{{route('register')}}" method="POST">
+            <h3 id = "text-1">Вход в систему</h3>
+        <form action = "{{route('login')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
@@ -37,7 +37,7 @@
                 <label for="exampleInputPassword1" class="form-label">Пароль</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name = "password">
             </div>
-            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-primary">Войти</button>
         </form>
         </div>
 

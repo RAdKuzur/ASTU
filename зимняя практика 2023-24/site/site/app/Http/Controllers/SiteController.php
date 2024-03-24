@@ -13,13 +13,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+// база данных testdb
 
 
 class SiteController extends Controller
 {
+    public function login_show(){
+       
+        return view('login');
+    }
+    public function login_post(Request $request){
+       
+        return dd($request);
+    }
+    
+
     public function register_show(){
        
         return view('register');
+    }
+    public function register_post(Request $request){
+        return dd($request);
+        //return dd(DB::table("test_models")->get());
+        
     }
     public function main_show(){
         return view('main');
