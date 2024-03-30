@@ -90,5 +90,28 @@ namespace LAB_2_SADCHIKOV
                 flag++;
             }
         }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            double len = Convert.ToDouble(textBox4.Text);
+
+            string time = textBox1.Text;
+            double time2 = 3600 * 10 * (Convert.ToInt32(textBox1.Text[0])-48) + 3600 * (Convert.ToInt32(textBox1.Text[1])-48) +
+                60 * 10 * (Convert.ToInt32(textBox1.Text[3]) - 48) + 60 * (Convert.ToInt32(textBox1.Text[4]) - 48) +
+                10 * (Convert.ToInt32(textBox1.Text[6]) - 48) + (Convert.ToInt32(textBox1.Text[7])-48) +
+                (10 / 60) * (Convert.ToInt32(textBox1.Text[9]) - 48) + (1 / 60) * (Convert.ToInt32(textBox1.Text[10]) - 48);
+            textBox5.Text = Convert.ToString(3.6 * len / time2);
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
