@@ -1,0 +1,10 @@
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\bin\Debug\LAB_6_SADCHIKOV.exe.config
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\bin\Debug\LAB_6_SADCHIKOV.exe
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\bin\Debug\LAB_6_SADCHIKOV.pdb
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.csproj.AssemblyReference.cache
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.Form1.resources
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.Properties.Resources.resources
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.csproj.GenerateResource.cache
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.csproj.CoreCompileInputs.cache
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.exe
+C:\Users\Hp\source\repos\LAB_6_SADCHIKOV\LAB_6_SADCHIKOV\obj\Debug\LAB_6_SADCHIKOV.pdb
