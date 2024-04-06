@@ -10,3 +10,15 @@ C:\Users\Hp\source\repos\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIK
 C:\Users\Hp\source\repos\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.pdb
 C:\Users\Hp\source\repos\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.Form3.resources
 C:\Users\Hp\source\repos\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.Form2.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\bin\Debug\LAB_7_SADCHIKOV.exe.config
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\bin\Debug\LAB_7_SADCHIKOV.exe
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\bin\Debug\LAB_7_SADCHIKOV.pdb
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.csproj.AssemblyReference.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.Form1.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.Form2.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.Form3.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.Properties.Resources.resources
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.csproj.GenerateResource.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.exe
+C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_7_SADCHIKOV\LAB_7_SADCHIKOV\obj\Debug\LAB_7_SADCHIKOV.pdb

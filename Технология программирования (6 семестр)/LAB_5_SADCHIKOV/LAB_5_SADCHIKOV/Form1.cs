@@ -15,18 +15,24 @@ namespace LAB_5_SADCHIKOV
         public Form1()
         {
             InitializeComponent();
+            textBox1.Text = listBox1.Items.Count.ToString();
+            textBox2.Text = listBox2.Items.Count.ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             listBox1.Items.AddRange(listBox2.Items);
             listBox2.Items.Clear();
+            textBox1.Text = listBox1.Items.Count.ToString();
+            textBox2.Text = listBox2.Items.Count.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             listBox2.Items.AddRange(listBox1.Items);
             listBox1.Items.Clear();
+            textBox1.Text = listBox1.Items.Count.ToString();
+            textBox2.Text = listBox2.Items.Count.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,6 +42,8 @@ namespace LAB_5_SADCHIKOV
                 listBox1.Items.Add(listBox2.Items[listBox2.SelectedIndex]);
                 listBox2.Items.RemoveAt(listBox2.SelectedIndex);
             }
+            textBox1.Text = listBox1.Items.Count.ToString();
+            textBox2.Text = listBox2.Items.Count.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -45,6 +53,8 @@ namespace LAB_5_SADCHIKOV
                 listBox2.Items.Add(listBox1.Items[listBox1.SelectedIndex]);
                 listBox1.Items.RemoveAt(listBox1.SelectedIndex);
             }
+            textBox1.Text = listBox1.Items.Count.ToString();
+            textBox2.Text = listBox2.Items.Count.ToString();
         }
     }
 }

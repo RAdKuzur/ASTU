@@ -1,7 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Hp\\source\\repos\\LAB_5_SADCHIKOV\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{71CE324C-506E-444E-9B33-D31F39FECA39}|LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV.csproj|c:\\users\\hp\\desktop\\astu\\\u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\lab_5_sadchikov\\lab_5_sadchikov\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71CE324C-506E-444E-9B33-D31F39FECA39}|LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV.csproj|solutionrelative:lab_5_sadchikov\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71CE324C-506E-444E-9B33-D31F39FECA39}|LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV.csproj|c:\\users\\hp\\desktop\\astu\\\u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\lab_5_sadchikov\\lab_5_sadchikov\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71CE324C-506E-444E-9B33-D31F39FECA39}|LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV.csproj|solutionrelative:lab_5_sadchikov\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71CE324C-506E-444E-9B33-D31F39FECA39}|LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV.csproj|c:\\users\\hp\\desktop\\astu\\\u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\lab_5_sadchikov\\lab_5_sadchikov\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{71CE324C-506E-444E-9B33-D31F39FECA39}|LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV.csproj|solutionrelative:lab_5_sadchikov\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV\\Form1.cs",
+              "RelativeDocumentMoniker": "LAB_5_SADCHIKOV\\Form1.cs",
+              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV\\Form1.cs",
+              "RelativeToolTip": "LAB_5_SADCHIKOV\\Form1.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAC0AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T09:37:41.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV\\Program.cs",
+              "RelativeDocumentMoniker": "LAB_5_SADCHIKOV\\Program.cs",
+              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV\\Program.cs",
+              "RelativeToolTip": "LAB_5_SADCHIKOV\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T09:37:35.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV\\Form1.cs",
+              "RelativeDocumentMoniker": "LAB_5_SADCHIKOV\\Form1.cs",
+              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_5_SADCHIKOV\\LAB_5_SADCHIKOV\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "LAB_5_SADCHIKOV\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T09:37:29.457Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]
         }
