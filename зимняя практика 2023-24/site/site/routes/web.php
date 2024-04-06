@@ -31,6 +31,9 @@ Route::post('/contacts',  [SiteController::class, 'contacts_post'])->name('conta
 
 Route::get('/purchase',  [SiteController::class, 'purchase'])->name('purchase');
 
+Route::get('/stuff',  [SiteController::class, 'stuff'])->name('stuff');
+Route::get('/schedule',  [SiteController::class, 'schedule'])->name('schedule');
+
 Route::get('/purchase/booking',  [SiteController::class, 'booking'])->name('booking');
 Route::post('/purchase/booking',  [SiteController::class, 'booking_post'])->name('booking_post');
 

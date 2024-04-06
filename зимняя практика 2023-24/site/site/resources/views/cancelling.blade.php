@@ -6,20 +6,20 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel = "stylesheet" type="text/css" href="../css/bootstrap.css">
         <link rel = "stylesheet" type="text/css" href="../css/main.css">
-        <link rel="shortcut icon" href="/img/bus.png" type="image/png"> 
+        <link rel="shortcut icon" href="/img/bus.png" type="image/png">
     <title>Отмена</title>
     </head>
-    <body id = "body-1">    
-        <header id= "header"> 
+    <body id = "body-1">
+        <header id= "header">
             <div id = "head">
                 <img src="/img/bus3.jpg" alt="Логотип" id = "image-1">
                 <div id="nav">
-                    <span class = "panel">Главная</span>
-                    <span class = "panel">Для сотрудников</span>
-                    <span class = "panel">Услуги</span>
-                    <span class = "panel">Контакты</span>
-                    <span class = "panel">Войти</span>
-                    <span class = "panel">Зарегистрироваться</span>
+                    <span class = "panel"><a href="../main" class="navigation-reff">Главная</a></span>
+                    <span class = "panel"><a href="../stuff" class="navigation-reff">Для сотрудников</a></span>
+                    <span class = "panel"><a href="../purchase" class="navigation-reff">Услуги</a></span>
+                    <span class = "panel"><a href="../contacts" class="navigation-reff">Контакты</a></span>
+                    <span class = "panel"><a href="../login" class="navigation-reff">Войти</a></span>
+                    <span class = "panel"><a href="../register" class="navigation-reff">Зарегистрироваться</a></span>
                 </div>
             </div>
         </header>
@@ -38,9 +38,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary" id = "button_cancel-1">Отменить бронирования</button>
             </form>
-        
-        
-        
+
+
+
         </div>
 
 
