@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('passport_number');
             $table->string('email');
             $table->string('phone');
+            $table->string('password');
             $table->timestamps();
         });
     }

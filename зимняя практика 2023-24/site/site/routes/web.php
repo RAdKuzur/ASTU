@@ -37,10 +37,12 @@ Route::get('/schedule',  [SiteController::class, 'schedule'])->name('schedule');
 Route::get('/purchase/booking',  [SiteController::class, 'booking'])->name('booking');
 Route::post('/purchase/booking',  [SiteController::class, 'booking_post'])->name('booking_post');
 
+Route::get('/purchase/booking/{id}',  [SiteController::class, 'booking_id'])->name('booking_id');
+Route::post('/purchase/booking/{id}',  [SiteController::class, 'booking_id_post'])->name('booking_id_post');
+
+
 Route::get('/purchase/cancelling',  [SiteController::class, 'cancelling'])->name('cancelling');
 Route::post('/purchase/cancelling',  [SiteController::class, 'cancelling_post'])->name('cancelling_post');
-
-
 
 Route::get('/', function () {
     return redirect("main");

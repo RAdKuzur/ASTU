@@ -24,17 +24,33 @@ class SiteController extends Controller
         return view('login');
     }
     public function login_post(Request $request){
+        $login = $request->email;
+        $password = $request->password;
+        $users = DB::table('customers')->where('email', $login)->first();
+        if ($users == null){
+            return redirect('/login');
+        }
+        if($users->password == $password) {
+            return redirect('/main');
+        }
+        else {
+            return redirect('/login');
+        }
 
-        return dd($request);
     }
     public function register_show(){
 
         return view('register');
     }
     public function register_post(Request $request){
-        return dd($request);
-        //return dd(DB::table("test_models")->get());
-
+        $login = $request->email;
+        $password = $request->password;
+        $users = DB::table('customers')->where('email', $login)->first();
+        if ($users == null){
+            DB::table('customers')->insert(['email' => $login, 'password' => $password]);
+            return redirect('/main');
+        }
+        return redirect('/login');
     }
     public function main_show(){
         return view('main');
@@ -49,10 +65,46 @@ class SiteController extends Controller
         return view('purchase');
     }
     public function booking(){
-        return view('booking');
+                $cities = DB::table('cities')->get();
+                $runs = null;
+                return view('booking')->with(['cities' => $cities, 'runs' => $runs]);
     }
     public function booking_post(Request $request){
-        return dd($request);
+        $cities = DB::table('cities')->get();
+        $departure_city = $request->city_1;
+        $arrive_city = $request->city_2;
+        $route = DB::table('routes')->where('departure_city_id',$departure_city)
+            ->where('arrival_city_id', $arrive_city)->first();
+        if($route != null) {
+            $route_id = $route->id;
+            $runs = DB::table('runs') -> where('route_id', $route_id)->get();
+            return view('booking')->with(['runs' => $runs, 'cities'=>$cities]);
+        }
+        else {
+            return redirect('/purchase/booking');
+        }
+    }
+
+    public function booking_id($id){
+        $empty_seats = DB::table('seat_runs')->where('run_id', $id)->where('flag' , 0)->get();
+        $number_empty_seats = array();
+        foreach ($empty_seats as $seats) {
+            $seat_numbers =  DB::table('seats')->where('id', $seats->seat_id)->first();
+            array_push($number_empty_seats, $seat_numbers->number);
+        }
+        return view('bookingId')->with(['id' => $id, 'empty_seats' => $number_empty_seats]);
+    }
+    public function booking_id_post(Request $request, $id){
+        $seats = DB::table('seats')->where('number', $request->seat)->get();
+        foreach ($seats as $item){
+            $seats_id = $item->id;
+            $seats_run_id = DB::table('seat_runs')->where('seat_id', $seats_id)->first();
+            if($seats_run_id->run_id == $id)
+            {
+                DB::table('seat_runs')->where('seat_id', $seats_run_id->seat_id)->update(['flag' => 1]);
+            }
+        }
+        return redirect('/main');
     }
     public function stuff(){
         return view('stuff');
