@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\User;
 use Redirect;
 use GuzzleHttp\Client;
@@ -31,12 +29,16 @@ class SiteController extends Controller
             return redirect('/login');
         }
         if($users->password == $password) {
+            session(['key' => 'auth']);
             return redirect('/main');
         }
         else {
             return redirect('/login');
         }
-
+    }
+    public function profile(){
+        session(['key' => null]);
+        return view('profile');
     }
     public function register_show(){
 
@@ -53,6 +55,7 @@ class SiteController extends Controller
         return redirect('/login');
     }
     public function main_show(){
+
         return view('main');
     }
     public function contacts(){
@@ -100,7 +103,10 @@ class SiteController extends Controller
             $seats_id = $item->id;
             $seats_run_id = DB::table('seat_runs')->where('seat_id', $seats_id)->first();
             if($seats_run_id->run_id == $id)
-            {
+            {$id_2 = $seats_run_id->seat_id;
+                DB::table('tickets')->insert(['seat_run_id'=> $seats_run_id->seat_id,
+                    'carrier_id' => 1,
+                    'customer_id' => 1]);
                 DB::table('seat_runs')->where('seat_id', $seats_run_id->seat_id)->update(['flag' => 1]);
             }
         }

@@ -18,8 +18,13 @@
                     <span class = "panel"><a href="../stuff" class="navigation-reff">Для сотрудников</a></span>
                     <span class = "panel"><a href="../purchase" class="navigation-reff">Услуги</a></span>
                     <span class = "panel"><a href="../contacts" class="navigation-reff">Контакты</a></span>
+                    @if(session('key')==null)
                     <span class = "panel"><a href="../login" class="navigation-reff">Войти</a></span>
                     <span class = "panel"><a href="../register" class="navigation-reff">Зарегистрироваться</a></span>
+                    @endif
+                    @if(session('key')!=null)
+                        <span class = "panel"><a href="../profile" class="navigation-reff">Профиль</a></span>
+                    @endif
                 </div>
             </div>
         </header>

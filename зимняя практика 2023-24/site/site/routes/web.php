@@ -30,7 +30,7 @@ Route::post('/contacts',  [SiteController::class, 'contacts_post'])->name('conta
 
 
 Route::get('/purchase',  [SiteController::class, 'purchase'])->name('purchase');
-
+Route::get('/profile',  [SiteController::class, 'profile'])->name('profile');
 Route::get('/stuff',  [SiteController::class, 'stuff'])->name('stuff');
 Route::get('/schedule',  [SiteController::class, 'schedule'])->name('schedule');
 

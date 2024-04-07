@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -7,7 +8,7 @@
     <link rel = "stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel = "stylesheet" type="text/css" href="../css/main.css">
     <link rel="shortcut icon" href="/img/bus.png" type="image/png">
-    <title>Расписание</title>
+    <title>Профиль</title>
 </head>
 <body id = "body-1">
 <header id= "header">
@@ -19,8 +20,8 @@
             <span class = "panel"><a href="../purchase" class="navigation-reff">Услуги</a></span>
             <span class = "panel"><a href="../contacts" class="navigation-reff">Контакты</a></span>
             @if(session('key')==null)
-            <span class = "panel"><a href="../login" class="navigation-reff">Войти</a></span>
-            <span class = "panel"><a href="../register" class="navigation-reff">Зарегистрироваться</a></span>
+                <span class = "panel"><a href="../login" class="navigation-reff">Войти</a></span>
+                <span class = "panel"><a href="../register" class="navigation-reff">Зарегистрироваться</a></span>
             @endif
             @if(session('key')!=null)
                 <span class = "panel"><a href="../profile" class="navigation-reff">Профиль</a></span>
