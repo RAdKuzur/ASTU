@@ -29,7 +29,8 @@ class SiteController extends Controller
             return redirect('/login');
         }
         if($users->password == $password) {
-            session(['key' => 'auth']);
+
+            session(['key' => 'auth', 'login' => $users->id]);
             return redirect('/main');
         }
         else {
@@ -37,9 +38,19 @@ class SiteController extends Controller
         }
     }
     public function profile(){
-        session(['key' => null]);
-        return view('profile');
+        $login_id = session('login');
+        $login_query = DB::table('customers')->where('id', $login_id)->first();
+        $login = $login_query->email;
+        $bookings = DB::table('tickets')->where('customer_id',$login_id)->get();
+        return view('profile')->with(['login'=>$login, 'bookings' => $bookings]);
     }
+    public function profile_post(){
+        session(['key' => null, 'login' => null]);
+        return redirect('/login');
+    }
+
+
+
     public function register_show(){
 
         return view('register');
@@ -103,10 +114,11 @@ class SiteController extends Controller
             $seats_id = $item->id;
             $seats_run_id = DB::table('seat_runs')->where('seat_id', $seats_id)->first();
             if($seats_run_id->run_id == $id)
-            {$id_2 = $seats_run_id->seat_id;
+            {
+
                 DB::table('tickets')->insert(['seat_run_id'=> $seats_run_id->seat_id,
                     'carrier_id' => 1,
-                    'customer_id' => 1]);
+                    'customer_id' => session('login')]);
                 DB::table('seat_runs')->where('seat_id', $seats_run_id->seat_id)->update(['flag' => 1]);
             }
         }
@@ -119,7 +131,16 @@ class SiteController extends Controller
         return view('cancelling');
     }
     public function cancelling_post(Request $request){
-        return dd($request);
+        $code = $request->code;
+        $password = $request->password;
+        $login_id = session('login');
+        $users = DB::table('customers')->where('id', $login_id)->first();
+        if($users->password == $password) {
+            $seat =  DB::table('tickets')->where('id', $code)->first();
+            DB::table('seat_runs')->where('seat_id', $seat->seat_run_id)->update(['flag' => 0]);
+            DB::table('tickets')->where('id', $code)->delete();
+        }
+        return redirect('/purchase');
     }
     public function schedule(){
         return view('schedule');

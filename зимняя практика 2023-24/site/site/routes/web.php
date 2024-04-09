@@ -28,9 +28,11 @@ Route::get('/main',  [SiteController::class, 'main_show'])->name('main');
 Route::get('/contacts',  [SiteController::class, 'contacts'])->name('contacts');
 Route::post('/contacts',  [SiteController::class, 'contacts_post'])->name('contacts_post');
 
+Route::get('/profile',  [SiteController::class, 'profile'])->name('profile');
+Route::post('/profile',  [SiteController::class, 'profile_post'])->name('profile_post');
 
 Route::get('/purchase',  [SiteController::class, 'purchase'])->name('purchase');
-Route::get('/profile',  [SiteController::class, 'profile'])->name('profile');
+
 Route::get('/stuff',  [SiteController::class, 'stuff'])->name('stuff');
 Route::get('/schedule',  [SiteController::class, 'schedule'])->name('schedule');
 
