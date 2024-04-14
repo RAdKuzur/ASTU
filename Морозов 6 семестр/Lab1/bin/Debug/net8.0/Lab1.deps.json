@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Lab1/1.0.0": {
+        "dependencies": {
+          "RazorPages.Models": "1.0.0",
+          "RazorPages.Services": "1.0.0"
+        },
+        "runtime": {
+          "Lab1.dll": {}
+        }
+      },
+      "RazorPages.Models/1.0.0": {
+        "runtime": {
+          "RazorPages.Models.dll": {}
+        }
+      },
+      "RazorPages.Services/1.0.0": {
+        "dependencies": {
+          "RazorPages.Models": "1.0.0"
+        },
+        "runtime": {
+          "RazorPages.Services.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Lab1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RazorPages.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RazorPages.Services/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

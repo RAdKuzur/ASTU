@@ -1,0 +1,9 @@
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\obj\Debug\RazorPages.Services.csproj.AssemblyReference.cache
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\obj\Debug\RazorPages.Services.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\bin\Debug\RazorPages.Services.dll
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\bin\Debug\RazorPages.Services.pdb
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\bin\Debug\RazorPages.Models.dll
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\bin\Debug\RazorPages.Models.pdb
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\obj\Debug\RazorPag.CA0683F3.Up2Date
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\obj\Debug\RazorPages.Services.dll
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Services\obj\Debug\RazorPages.Services.pdb

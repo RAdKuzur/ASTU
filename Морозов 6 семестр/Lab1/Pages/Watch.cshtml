@@ -1,0 +1,18 @@
+﻿@page
+@model Lab1.Pages.WatchModel
+@{
+    ViewData["Title"] = "Watch";
+}
+<div class="text-center">
+    <h1 class="display-4">Просмотр</h1>
+    <p>Просмотр</p>
+   
+    @foreach (var dish in Model.Dishes)
+    {
+        string dishName = dish.Name;
+        @dishName;
+        // Now you can use dishName variable which contains the Name of each Dish
+    }
+    
+    
+</div>

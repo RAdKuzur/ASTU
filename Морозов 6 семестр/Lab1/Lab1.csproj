@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Component.razor" />
+    <Content Remove="Pages\Index1 - Копировать %282%29.cshtml" />
+    <Content Remove="Pages\Index1 - Копировать %283%29.cshtml" />
+    <Content Remove="Pages\Index1 - Копировать.cshtml" />
+    <Content Remove="Pages\Index1.cshtml" />
+    <Content Remove="Pages\_Layout.cshtml" />
+    <Content Remove="Pages\_ViewStart1.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Component.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Component.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Component.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RazorPages.Models\RazorPages.Models.csproj" />
+    <ProjectReference Include="..\RazorPages.Services\RazorPages.Services.csproj" />
+  </ItemGroup>
+
+</Project>

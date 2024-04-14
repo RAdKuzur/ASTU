@@ -1,0 +1,6 @@
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\bin\Debug\RazorPages.Models.dll
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\bin\Debug\RazorPages.Models.pdb
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.csproj.AssemblyReference.cache
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.csproj.CoreCompileInputs.cache
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.dll
+C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.pdb
