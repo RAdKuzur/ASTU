@@ -6,13 +6,30 @@
 <div class="text-center">
     <h1 class="display-4">Просмотр</h1>
     <p>Просмотр</p>
-   
-    @foreach (var dish in Model.Dishes)
-    {
-        string dishName = dish.Name;
-        @dishName;
-        // Now you can use dishName variable which contains the Name of each Dish
-    }
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Название блюда</th>
+                <th scope="col">Ингридиенты</th>
+                <th scope="col">Способ приготовления</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                @foreach (var dish in Model.dishes)
+                { 
+                <tr>
+                    <td>@dish.Name</td>
+                    <td>@dish.Description</td>
+                    <td>@dish.Type</td>
+                </tr>
+                }
+        </tbody>
+    </table>
     
-    
+
+
+
+
+
 </div>

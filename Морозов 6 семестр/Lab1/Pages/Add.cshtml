@@ -6,4 +6,13 @@
 <div class="text-center">
     <h1 class="display-4">Добавление</h1>
     <p>Добавление</p>
+    <form method="post" action="~/add">
+        <label>Название блюда:</label><br />
+        <input type="text" name="name" /><br />
+        <label>Ингридиенты</label><br/>
+        <input type="text" name="pieces"/><br/>
+        <label>Инструкции</label><br />
+        <input type="text" name="type"/><br/>
+        <input type="submit" value="Отправить" />
+    </form>
 </div>

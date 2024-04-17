@@ -5,5 +5,10 @@
 }
 <div class="text-center">
     <h1 class="display-4">Удаление</h1>
-    <p>Удаление</p>
+    <p>Удаление по названию блюда</p>
+    <form method="post" action="~/delete">
+        <label>Название блюда:</label><br />
+        <input type="text" name="name" /><br />
+        <input type="submit" value="Удалить" />
+    </form>
 </div>

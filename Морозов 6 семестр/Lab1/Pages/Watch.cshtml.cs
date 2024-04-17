@@ -7,16 +7,7 @@ namespace Lab1.Pages
 {
     public class WatchModel : PageModel
     {
-        /*private readonly IDishRepository _db;
-        public WatchModel(IDishRepository db) {
-            _db = db;
-        }
-        public IEnumerable<Dish> Dishes{ get; set; }
-        public void OnGet()
-        {
-            Dishes = _db.GetAllDish();
-        }
-        */
+        public List<Dish> dishes = new List<Dish>();
         private readonly DataClassRepository _db;
         public WatchModel(DataClassRepository db)
         {
@@ -25,7 +16,7 @@ namespace Lab1.Pages
         public IEnumerable<Dish> Dishes { get; set; }
         public void OnGet()
         {
-            Dishes = _db.GetAllDish();
+            dishes = _db.List();
         }
     }
 }
