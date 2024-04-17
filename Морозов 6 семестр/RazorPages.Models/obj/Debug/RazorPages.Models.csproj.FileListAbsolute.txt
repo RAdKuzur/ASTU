@@ -4,3 +4,9 @@ C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPage
 C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.csproj.CoreCompileInputs.cache
 C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.dll
 C:\Users\Hp\Desktop\1-razor-pages-RAdKuzur\RazorPages.Models\obj\Debug\RazorPages.Models.pdb
+C:\Users\Praktik\Desktop\ASTU\ASTU\Морозов 6 семестр\RazorPages.Models\bin\Debug\RazorPages.Models.dll
+C:\Users\Praktik\Desktop\ASTU\ASTU\Морозов 6 семестр\RazorPages.Models\bin\Debug\RazorPages.Models.pdb
+C:\Users\Praktik\Desktop\ASTU\ASTU\Морозов 6 семестр\RazorPages.Models\obj\Debug\RazorPages.Models.csproj.AssemblyReference.cache
+C:\Users\Praktik\Desktop\ASTU\ASTU\Морозов 6 семестр\RazorPages.Models\obj\Debug\RazorPages.Models.csproj.CoreCompileInputs.cache
+C:\Users\Praktik\Desktop\ASTU\ASTU\Морозов 6 семестр\RazorPages.Models\obj\Debug\RazorPages.Models.dll
+C:\Users\Praktik\Desktop\ASTU\ASTU\Морозов 6 семестр\RazorPages.Models\obj\Debug\RazorPages.Models.pdb

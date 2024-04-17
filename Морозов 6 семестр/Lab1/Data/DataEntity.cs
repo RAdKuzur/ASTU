@@ -9,5 +9,11 @@ public class DataEntity
     /// <summary>
     /// Идентификатор
     /// </summary>
+    public class Dish
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+    }
     public Guid Id { get; set; }
 }

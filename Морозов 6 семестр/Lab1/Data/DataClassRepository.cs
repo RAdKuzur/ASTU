@@ -1,4 +1,6 @@
-﻿namespace Lab1.Data;
+﻿using static Lab1.Data.DataEntity;
+
+namespace Lab1.Data;
 
 /// <summary>
 /// Класс репозиторий для сохранения данных о ...
@@ -64,4 +66,19 @@ public class DataClassRepository
             // Save updated list to file
         }
     }
+    private List<Dish> _receipts;
+    public IEnumerable<Dish> GetAllDish()
+    {
+        _receipts = new List<Dish>() {
+                new Dish()
+                {
+                    Id = 1,
+                    Name = "name"
+                }
+            };
+        return _receipts;
+    }
+
+
+
 }
