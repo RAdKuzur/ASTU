@@ -12,7 +12,6 @@
     <Content Remove="Pages\Index1 - Копировать %283%29.cshtml" />
     <Content Remove="Pages\Index1 - Копировать.cshtml" />
     <Content Remove="Pages\Index1.cshtml" />
-    <Content Remove="Pages\_Layout.cshtml" />
     <Content Remove="Pages\_ViewStart1.cshtml" />
   </ItemGroup>
 

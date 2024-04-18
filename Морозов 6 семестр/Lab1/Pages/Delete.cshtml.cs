@@ -7,7 +7,7 @@ namespace Lab1.Pages
 {
     public class DeleteModel : PageModel
     {
-     
+        public List<Dish> dishes = new List<Dish>();
         private readonly DataClassRepository _db;
         public DeleteModel(DataClassRepository db)
         {
@@ -16,17 +16,16 @@ namespace Lab1.Pages
 
         public void OnGet()
         {
-
+            dishes = _db.List();
         }
         public void OnPost(string name, string pieces, string type)
         {
             Dish dish = new Dish()
             {
                 Name = name,
-  
-
             };
             _db.Remove(dish);
+            dishes = _db.List();
         }
     }
 }

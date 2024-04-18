@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yyPMg0CxjvM7ZSNoWAEvDWfsP1YIOtIm2zmAURd1R8RLS8nBGzn3Cc28kwQgNcPfeoNqs/UMGyDFd73p+ZfNhQ==",
+  "dgSpecHash": "oNiUpUEEMZH8SMiH33MZS0tQlgeFP+G1xB4dKV8My9jpcdpUBJV2hLANlPm0WYsWJ5Uf0VO7A7AOdCCBQDqRWA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hp\\Desktop\\ASTU\\Морозов 6 семестр\\Lab1\\Lab1.csproj",
+  "projectFilePath": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\Lab1\\Lab1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hp\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

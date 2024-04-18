@@ -1,30 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\",
+  "WorkspaceRootPath": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\data\\dataclassrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\data\\dataclassrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\1-razor-pages-radkuzur\\lab1\\appdata\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\appdata\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,78 +22,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Delete.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Delete.cshtml.cs",
-              "RelativeDocumentMoniker": "Lab1\\Pages\\Delete.cshtml.cs",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Delete.cshtml.cs",
-              "RelativeToolTip": "Lab1\\Pages\\Delete.cshtml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T18:33:58.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Delete.cshtml",
-              "RelativeDocumentMoniker": "Lab1\\Pages\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Delete.cshtml",
-              "RelativeToolTip": "Lab1\\Pages\\Delete.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-17T18:32:29.675Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Lab1\\Pages\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml",
-              "RelativeToolTip": "Lab1\\Pages\\Edit.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-17T17:20:21.394Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Edit.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml.cs",
-              "RelativeDocumentMoniker": "Lab1\\Pages\\Edit.cshtml.cs",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml.cs",
-              "RelativeToolTip": "Lab1\\Pages\\Edit.cshtml.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAApwB0AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T17:25:14.365Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "Lab1\\Pages\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Privacy.cshtml",
-              "RelativeToolTip": "Lab1\\Pages\\Privacy.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-17T17:25:10.096Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DataClassRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Data\\DataClassRepository.cs",
-              "RelativeDocumentMoniker": "Lab1\\Data\\DataClassRepository.cs",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Data\\DataClassRepository.cs",
-              "RelativeToolTip": "Lab1\\Data\\DataClassRepository.cs",
-              "ViewState": "AQIAAJ4AAAAAAAAAAAAswK0AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T05:52:53.771Z",
+              "Title": "test.txt",
+              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\Lab1\\APPDATA\\test.txt",
+              "RelativeDocumentMoniker": "Lab1\\APPDATA\\test.txt",
+              "ToolTip": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\Lab1\\APPDATA\\test.txt",
+              "RelativeToolTip": "Lab1\\APPDATA\\test.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-04-18T17:25:46.166Z",
               "EditorCaption": ""
             }
           ]

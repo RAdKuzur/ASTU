@@ -10,7 +10,6 @@ namespace Lab1.Data;
 // TODO: реализуйте здесь чтение и запись файла
 public class DataClassRepository
 {
-
     /// <summary>
     /// Возврщает все элементы списка
     /// </summary>
@@ -39,8 +38,8 @@ public class DataClassRepository
     }
     static void RemoveLineFromFile(string lineToRemove)
     { 
-            string tempFilePath = @"C:\Temp\database2.txt";
-            string filePath = @"C:\Temp\database.txt";
+            string tempFilePath = @"APPDATA\database2.txt";
+            string filePath = @"APPDATA\database.txt";
             using (StreamReader reader = new StreamReader(filePath))
             using (StreamWriter writer = new StreamWriter(tempFilePath))
             {
@@ -53,38 +52,65 @@ public class DataClassRepository
                     }
                     else
                     {
+                        //reader.ReadLine();
                         reader.ReadLine();
                         reader.ReadLine();
-                        reader.ReadLine();
-
                     }
                 }
             }
             File.Delete(filePath); // Удаляем оригинальный файл
             File.Move(tempFilePath, filePath); // Переименовываем временный файл в оригинальный
     }
+    static void RemoveAndUpdateLineFromFile(string lineToRemove, string FirstlineToUpdate , string SecondlineToUpdate)
+    {
+        string tempFilePath = @"APPDATA\database2.txt";
+        string filePath = @"APPDATA\database.txt";
+        using (StreamReader reader = new StreamReader(filePath))
+        using (StreamWriter writer = new StreamWriter(tempFilePath))
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (line != lineToRemove)
+                {
+                    writer.WriteLine(line);
+                    line = reader.ReadLine();
+                    writer.WriteLine(line);
+                    line = reader.ReadLine();
+                    writer.WriteLine(line);
+                }
+                else
+                {
+                    reader.ReadLine();
+                    reader.ReadLine();
+                    writer.WriteLine(line);
+                    writer.WriteLine(FirstlineToUpdate);
+                    writer.WriteLine(SecondlineToUpdate);
+                }
+            }
+        }
+        File.Delete(filePath); // Удаляем оригинальный файл
+        File.Move(tempFilePath, filePath); // Переименовываем временный файл в оригинальный
+    }
     public List<DataEntity.Dish> List()
     {
         lock (this)
         {
-            string filePath = @"C:\Temp\database.txt"; // Путь к файлу, из которого нужно прочитать одну строку
-            string id = ""; //тире
+            string filePath = @"APPDATA\database.txt"; // Путь к файлу, из которого нужно прочитать одну строку
             string name = ""; //имя блюда
             string pieces = ""; //ингридиенты
             string type = ""; //способ готовки
             string line = ReadFileLine(filePath);
-
             List<Dish> dishes = new List<Dish>();
-
             try
             {
                 if (File.Exists(filePath))
                 {
                     using (StreamReader reader = new StreamReader(filePath))
                     {
-                        while ((id = reader.ReadLine())!= null)
+                        while ((name = reader.ReadLine())!= null)
                         {
-                            name = reader.ReadLine();
+                            // name = reader.ReadLine();
                             pieces = reader.ReadLine();
                             type = reader.ReadLine(); 
                             Dish dish = new Dish()
@@ -111,7 +137,16 @@ public class DataClassRepository
             return dishes;
         }
     }
-
+    public void CopyTest()
+    {
+        string sourceFilePath = @"APPDATA\test.txt"; // Путь к файлу, из которого нужно скопировать данные
+        string destinationFilePath =  @"APPDATA\database.txt"; // Путь к файлу, в который нужно скопировать данные
+        if (!File.Exists(destinationFilePath))
+        {
+                using (File.Create(destinationFilePath)) { }
+        }
+        File.Copy(sourceFilePath, destinationFilePath, true);
+    }
     /// <summary>
     /// Добавляет новую запись
     /// </summary>
@@ -123,7 +158,7 @@ public class DataClassRepository
             string name = data.Name;
             string pieces = data.Description;
             string type = data.Type;
-            string directoryPath = @"C:\Temp"; // Путь к директории, где хотите создать файл
+            string directoryPath = @"APPDATA"; // Путь к директории, где хотите создать файл
             string fileName = "database.txt"; // Имя файла
             string filePath = Path.Combine(directoryPath, fileName);
             try
@@ -136,15 +171,15 @@ public class DataClassRepository
                 // Проверяем существует ли файл, если да - дописываем информацию
                 if (File.Exists(filePath))
                 {
-                    File.AppendAllText(filePath, "-" + '\n');
+                    //File.AppendAllText(filePath, "-" + '\n');
                     File.AppendAllText(filePath, name + '\n');
                     File.AppendAllText(filePath, pieces + '\n');
                     File.AppendAllText(filePath, type + '\n');
                 }
                 else
                 {
-                    File.WriteAllText(filePath, "-" + '\n');
-                    File.AppendAllText(filePath, name + '\n');
+                    //File.WriteAllText(filePath, "-" + '\n');
+                    File.WriteAllText(filePath, name + '\n');
                     File.AppendAllText(filePath, pieces + '\n');
                     File.AppendAllText(filePath, type + '\n');
                 }
@@ -164,18 +199,11 @@ public class DataClassRepository
     {
         lock (this)
         {
-            string filePath = @"C:\Temp\database.txt";
-           
-            string id = "-"; //тире
+            string filePath = @"APPDATA\database.txt";
             string name = data.Name; //имя блюда
             string pieces = data.Description; //ингридиенты
-            string type = data.Type; //способ готовки
-           
-            RemoveLineFromFile(name);
-
-
-
-
+            string type = data.Type; //способ готовки      
+            RemoveAndUpdateLineFromFile(name, pieces, type);
 
         }
     }
@@ -188,9 +216,7 @@ public class DataClassRepository
     {
         lock (this)
         {
-            string filePath = @"C:\Temp\database.txt";
-
-            string id = "-"; //тире
+            //string filePath = @"C:\Temp\database.txt";
             string name = data.Name; //имя блюда
             string pieces = data.Description; //ингридиенты
             string type = data.Type; //способ готовки

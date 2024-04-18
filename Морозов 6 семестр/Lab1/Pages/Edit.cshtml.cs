@@ -7,15 +7,15 @@ namespace Lab1.Pages
 {
     public class EditModel : PageModel
     {
+        public List<Dish> dishes = new List<Dish>();
         private readonly DataClassRepository _db;
         public EditModel(DataClassRepository db)
         {
             _db = db;
         }
-   
+       
         public void OnGet()
-        { 
-
+        {
         }
         public void OnPost(string name, string pieces, string type)
         {
@@ -26,6 +26,7 @@ namespace Lab1.Pages
                 Type = type
 
             };
+            
             _db.Update(dish);
         }
     }

@@ -1,3 +1,4 @@
+using Lab1.Data;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Lab1.Pages;
@@ -5,12 +6,18 @@ namespace Lab1.Pages;
 public class IndexModel : PageModel
 {
 
-    public IndexModel(/*Inject repository here*/)
+    private readonly DataClassRepository _db;
+    public IndexModel(DataClassRepository db)
     {
+        _db = db;
     }
 
     public void OnGet()
     {
 
+    }
+    public void OnPost()
+    {
+        _db.CopyTest();
     }
 }

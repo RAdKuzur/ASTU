@@ -10,13 +10,13 @@ namespace Lab1.Pages
         private readonly DataClassRepository _db;
         public AddModel(DataClassRepository db)
         {
-            _db = db;
+                       _db = db;
         }
         public string text = "text";
         public string Message { get; private set; } = "";
         public void OnGet()
         {
-            text = Message;
+            
         }
         public void OnPost(string name, string pieces, string type)
         {
