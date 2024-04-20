@@ -6,8 +6,8 @@ namespace Lab1.Pages;
 public class IndexModel : PageModel
 {
 
-    private readonly DataClassRepository _db;
-    public IndexModel(DataClassRepository db)
+    private readonly DishRepository _db;
+    public IndexModel(DishRepository db)
     {
         _db = db;
     }
@@ -18,6 +18,6 @@ public class IndexModel : PageModel
     }
     public void OnPost()
     {
-        _db.CopyTest();
+        _db.CopyData();
     }
 }

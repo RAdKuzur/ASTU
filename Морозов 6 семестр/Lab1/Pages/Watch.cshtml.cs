@@ -1,15 +1,16 @@
 using Lab1.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using static Lab1.Data.DataEntity;
+using static Lab1.Data.Dish;
 
 namespace Lab1.Pages
 {
     public class WatchModel : PageModel
     {
-        public List<Dish> dishes = new List<Dish>();
-        private readonly DataClassRepository _db;
-        public WatchModel(DataClassRepository db)
+        public Dish dish { get; set; }
+        public IList<Dish> dishes = new List<Dish>();
+        private readonly DishRepository _db;
+        public WatchModel(DishRepository db)
         {
             _db = db;
         }
@@ -17,6 +18,11 @@ namespace Lab1.Pages
         public void OnGet()
         {
             dishes = _db.List();
+        }
+        public IActionResult OnPost(Guid id)
+        {
+            _db.Remove(id);
+            return RedirectToPage("./Watch");
         }
     }
 }

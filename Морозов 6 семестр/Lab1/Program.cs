@@ -3,7 +3,7 @@ using Lab1.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<DataClassRepository>();
+builder.Services.AddSingleton<DishRepository>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();

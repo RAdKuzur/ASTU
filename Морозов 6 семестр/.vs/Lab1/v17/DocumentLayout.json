@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\hp\\desktop\\1-razor-pages-radkuzur\\lab1\\appdata\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\appdata\\test.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,24 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "test.txt",
-              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\Lab1\\APPDATA\\test.txt",
-              "RelativeDocumentMoniker": "Lab1\\APPDATA\\test.txt",
-              "ToolTip": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\Lab1\\APPDATA\\test.txt",
-              "RelativeToolTip": "Lab1\\APPDATA\\test.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-04-18T17:25:46.166Z",
-              "EditorCaption": ""
             }
           ]
         }

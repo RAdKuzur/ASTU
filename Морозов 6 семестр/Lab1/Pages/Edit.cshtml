@@ -7,14 +7,16 @@
     
     <h1 class="display-4">Редактирование</h1>
     <p>Редактирование</p>
-    <p>Поиск по названию блюда и редактирование его ингридиентов и способа готовки</p>
     <form method="post" action="~/edit">
-        <label>Название блюда:</label><br />
-        <input type="text" name="name" /><br />
+        <label>Название блюда:</label><br/>
+        <input type="hidden" value="@Model.dish.Id" name="id" /><br />
+        <input type="text" value="@Model.dish.Name" name="name"/><br />
         <label>Ингридиенты</label><br />
-        <input type="text" name="pieces" /><br />
+        <input type="text" value="@Model.dish.Description" name="pieces" /><br />
         <label>Инструкции</label><br />
-        <input type="text" name="type" /><br />
-        <input type="submit" value="Редактировать" />
+        <input type="text" value="@Model.dish.Type" name="type" /><br />
+        <a asp-page="/Watch">
+            <button type="submit" class="btn btn-danger">Редактировать</button>
+        </a>
     </form>
 </div>
