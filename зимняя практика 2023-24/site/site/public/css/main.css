@@ -9,7 +9,6 @@
     margin-left: 10px;
     width: 5%;
     height: 5%;
-
 }
 #body-1 {
     background-color: lightblue;
@@ -166,6 +165,7 @@
     width: 95vw;
     margin-left: 3vw;
     margin-top: 3vw;
+    margin-bottom: 3vw;
     border-radius: 3vw;
     height: 30vw;
     background-color: white;
@@ -180,6 +180,17 @@
     margin-left: 3vw;
     margin-right: 3vw;
     margin-bottom: 3vw;
+}
+#div-other-1 {
+    width: auto;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    border-radius: 3vw;
+    height:  auto;
+    background-color: white;
+    z-index: 1;
 }
 #div-button-1 {
     background-color: white;
@@ -257,4 +268,11 @@
 .navigation-reff {
     text-decoration: none;
     color: white;
+}
+.topic-1 {
+   text-align:center;
+}
+#input-other {
+
+    width:25vw;
 }

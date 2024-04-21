@@ -46,6 +46,13 @@ Route::post('/purchase/booking/{id}',  [SiteController::class, 'booking_id_post'
 Route::get('/purchase/cancelling',  [SiteController::class, 'cancelling'])->name('cancelling');
 Route::post('/purchase/cancelling',  [SiteController::class, 'cancelling_post'])->name('cancelling_post');
 
+Route::get('/stuff/run',  [SiteController::class, 'run'])->name('run');
+Route::post('/stuff/run',  [SiteController::class, 'run_post'])->name('run_post');
+
+Route::get('/stuff/other',  [SiteController::class, 'other'])->name('other_post');
+Route::post('/stuff/other',  [SiteController::class, 'other_post'])->name('other_post');
+
+
 Route::get('/', function () {
     return redirect("main");
 });

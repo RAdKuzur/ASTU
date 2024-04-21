@@ -18,7 +18,6 @@ use App\Models;
 class SiteController extends Controller
 {
     public function login_show(){
-
         return view('login');
     }
     public function login_post(Request $request){
@@ -40,27 +39,29 @@ class SiteController extends Controller
     public function profile(){
         $login_id = session('login');
         $login_query = DB::table('customers')->where('id', $login_id)->first();
-        $login = $login_query->email;
         $bookings = DB::table('tickets')->where('customer_id',$login_id)->get();
-        return view('profile')->with(['login'=>$login, 'bookings' => $bookings]);
+        return view('profile')->with(['login_query'=>$login_query, 'bookings' => $bookings]);
     }
     public function profile_post(){
         session(['key' => null, 'login' => null]);
         return redirect('/login');
     }
-
-
-
     public function register_show(){
 
         return view('register');
     }
     public function register_post(Request $request){
+        $name = $request->name;
+        $surname = $request->surname;
+        $serial = $request->serial;
+        $number = $request->number;
         $login = $request->email;
         $password = $request->password;
         $users = DB::table('customers')->where('email', $login)->first();
         if ($users == null){
-            DB::table('customers')->insert(['email' => $login, 'password' => $password]);
+            DB::table('customers')->insert(['email' => $login, 'password' => $password,
+                'name' => $name, 'surname' => $surname, 'passport_series' => $serial,
+                'passport_number' => $number, 'role' => 0]);
             return redirect('/main');
         }
         return redirect('/login');
@@ -73,7 +74,16 @@ class SiteController extends Controller
         return view('contacts');
     }
     public function contacts_post(Request $request){
-        return dd($request);
+        $login_id = session('login');
+        if($login_id != null) {
+            if ($request->comment) {
+                DB::table('comments')->insert(['comment' => $request->comment, 'customer_id' => $login_id]);
+            }
+            return redirect('/main');
+        }
+        else {
+            return redirect('/login');
+        }
     }
     public function purchase(){
         return view('purchase');
@@ -98,7 +108,6 @@ class SiteController extends Controller
             return redirect('/purchase/booking');
         }
     }
-
     public function booking_id($id){
         $empty_seats = DB::table('seat_runs')->where('run_id', $id)->where('flag' , 0)->get();
         $number_empty_seats = array();
@@ -145,6 +154,42 @@ class SiteController extends Controller
     public function schedule(){
         return view('schedule');
     }
-
-    //
+    public function run()
+    {
+        $login_id = session('login');
+        $query = DB::table('customers')->where('id', $login_id)->first();
+        if($query->role != 0){
+            dd(DB::table('runs')->get());
+            return view('run')->with([]);
+        }
+        else {
+            return redirect('/main');
+        }
+    }
+    public function run_post(Request $request){
+        dd($request);
+    }
+    public function other(){
+        $first_counter = 1;
+        $second_counter = 1;
+        $cities = DB::table('cities')->get();
+        $buses =  DB::table('buses')->get();
+        $model_buses =  DB::table('model_buses')->get();
+        return view("other")->with(['cities' => $cities, 'first_counter' => $first_counter,
+            'buses' => $buses, 'second_counter' => $second_counter,
+            'model_buses' => $model_buses]);
+    }
+    public function other_post(Request $request){
+        if($request->city != null &&  DB::table('cities')->where('name', $request->city)->get() == null ){
+            DB::table('cities')->insert(['name' => $request->city]);
+        }
+        if($request->bus != null && $request->number != null && $request->seats != null && $request->status != null){
+            DB::table('buses')->insert(['model_id' => $request->bus,
+                'number' => $request->number,
+                'seats' => $request->seats,
+                'status' => $request->status,
+                ]);
+        }
+        return redirect('/stuff/other');
+    }
 }

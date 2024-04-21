@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('seat_run_id');
             $table->integer('customer_id');
             $table->integer('carrier_id');
+            $table->string('code');
             $table->timestamps();
         });
     }

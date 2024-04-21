@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('surname');
             $table->string('name');
-            $table->string('patronymic');
             $table->integer('passport_series');
             $table->integer('passport_number');
             $table->string('email');
             $table->string('phone');
             $table->string('password');
+            $table->integer('role');
             $table->timestamps();
         });
     }

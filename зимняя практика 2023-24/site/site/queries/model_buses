@@ -1,0 +1,5 @@
+INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Mercedes-Benz', 'Sprinter', NOW(), NOW());
+INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Volvo', '9700', NOW(), NOW());
+INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Scania', 'Touring', NOW(), NOW());
+INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('MAN', 'Lion's Coach', NOW(), NOW());
+INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Iveco', 'Crossway', NOW(), NOW());

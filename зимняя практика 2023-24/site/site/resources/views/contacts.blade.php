@@ -38,10 +38,6 @@
                 @csrf
             <div id = "div-3">
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea0" class="form-label">Напишите ваше имя</label>
-                    <input class="form-control" id="exampleFormControlTextarea0" rows="3" name = "name"></textarea>
-                </div>
-                <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Напишите ваш отзыв</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name = "comment"></textarea>
                 </div>

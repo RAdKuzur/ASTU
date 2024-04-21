@@ -32,8 +32,11 @@
 <div id = "div-1">
     <div id = "div-2">
         <h1>Мой профиль:</h1></br>
-        <h3>Почта:</h3>{{$login}}</br>
-        <h3>ФИО:</h3></br>
+        <h3>Почта:</h3>{{$login_query->email}}
+        <h3>Ваши персональные данные(фамилия и имя):</h3>
+        <h6>{{$login_query->surname}} {{$login_query->name}}</h6>
+        <h3>Серия и номер паспорта:</h3>
+        <h6>{{$login_query->passport_series}} {{$login_query->passport_number}}</h6>
     </div>
     <form action = "{{route('profile_post')}}" method="POST">
         @csrf

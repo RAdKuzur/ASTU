@@ -38,10 +38,6 @@
                 @foreach($cities as $city)
                     <option value="{{$city->id}}">{{$city->name}}</option>
                 @endforeach
-
-               <!-- <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option> -->
             </select>
             <select class="form-select" aria-label="Default select example" id = "select-box" name = "city_2">
                 <option selected>Выберите город назначения</option>

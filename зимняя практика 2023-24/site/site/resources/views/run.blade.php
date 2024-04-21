@@ -7,7 +7,7 @@
     <link rel = "stylesheet" type="text/css" href="../css/bootstrap.css">
     <link rel = "stylesheet" type="text/css" href="../css/main.css">
     <link rel="shortcut icon" href="/img/bus.png" type="image/png">
-    <title>Для сотрудников</title>
+    <title>Рейсы</title>
 </head>
 <body id = "body-1">
 <header id= "header">
@@ -18,19 +18,27 @@
             <span class = "panel"><a href="../stuff" class="navigation-reff">Для сотрудников</a></span>
             <span class = "panel"><a href="../purchase" class="navigation-reff">Услуги</a></span>
             <span class = "panel"><a href="../contacts" class="navigation-reff">Контакты</a></span>
-            @if(session('key')==null)
-            <span class = "panel"><a href="../login" class="navigation-reff">Войти</a></span>
-            <span class = "panel"><a href="../register" class="navigation-reff">Зарегистрироваться</a></span>
-            @endif
-            @if(session('key')!=null)
-                <span class = "panel"><a href="../profile" class="navigation-reff">Профиль</a></span>
-            @endif
-        </div>
+@if(session('key')==null)
+    <span class = "panel"><a href="../login" class="navigation-reff">Войти</a></span>
+    <span class = "panel"><a href="../register" class="navigation-reff">Зарегистрироваться</a></span>
+@endif
+@if(session('key')!=null)
+    <span class = "panel"><a href="../profile" class="navigation-reff">Профиль</a></span>
+    @endif
     </div>
-</header>
-<a href="stuff/run" class = "ref-2" text-decoration="none"><div id = "div-button-1"><h2 class="ref-1">Рейсы</h2></div></a>
-<a href="stuff/other" class = "ref-2" text-decoration="none"><div id = "div-button-1"><h2 class="ref-1">Перевозчики, автобусы и другое</h2></div></a>
+    </div>
+    </header>
+    </body>
+<div id = "div-1">
+    <div id = "div-2">
+        <h3>Расписание рейсов:</h3>
+    </div>
+</div>
+<div id = "div-1">
+    <div id = "div-2">
+        <h3>Добавление рейса:</h3>
+    </div>
+</div>
 
 
-</body>
 </html>
