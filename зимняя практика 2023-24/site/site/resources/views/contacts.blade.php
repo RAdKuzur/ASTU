@@ -44,13 +44,6 @@
                 <button type="submit" class="btn btn-primary">Отправить отзыв</button>
             </div>
             </form>
-
-
-
-
         </div>
-
-
-
     </body>
 </html>

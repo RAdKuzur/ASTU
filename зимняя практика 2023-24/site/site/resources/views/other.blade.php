@@ -111,6 +111,36 @@
         </table>
     </div>
 </div>
+<div id = "div-other-1">
+    <div id = "div-2">
+        <h3>Добавление перевозчиков:</h3>
+        <form action = "{{route('other_post')}}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Введите название перевозчика</label>
+                <input class="form-control" type="text" placeholder="Название перевозчика" name = "carrier">
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить перевозчика</button>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Перевозчик</th>
+            </tr>
+            </thead>
+            <tbody>
 
+            @foreach($carriers as $carrier)
+                <tr>
+                    <td>{{$third_counter++}}</td>
+                    <td>{{$carrier->name}}</td>
+                    <td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 
 </html>

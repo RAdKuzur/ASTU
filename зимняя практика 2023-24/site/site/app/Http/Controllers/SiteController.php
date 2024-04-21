@@ -13,8 +13,6 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models;
 // база данных testdb
-
-
 class SiteController extends Controller
 {
     public function login_show(){
@@ -159,7 +157,7 @@ class SiteController extends Controller
         $login_id = session('login');
         $query = DB::table('customers')->where('id', $login_id)->first();
         if($query->role != 0){
-            dd(DB::table('runs')->get());
+            //dd(DB::table('runs')->get());
             return view('run')->with([]);
         }
         else {
@@ -172,15 +170,18 @@ class SiteController extends Controller
     public function other(){
         $first_counter = 1;
         $second_counter = 1;
+        $third_counter = 1;
         $cities = DB::table('cities')->get();
         $buses =  DB::table('buses')->get();
         $model_buses =  DB::table('model_buses')->get();
+        $carriers = DB::table('carriers')->get();
         return view("other")->with(['cities' => $cities, 'first_counter' => $first_counter,
             'buses' => $buses, 'second_counter' => $second_counter,
-            'model_buses' => $model_buses]);
+            'model_buses' => $model_buses,
+            'carriers' => $carriers, 'third_counter' => $third_counter]);
     }
     public function other_post(Request $request){
-        if($request->city != null &&  DB::table('cities')->where('name', $request->city)->get() == null ){
+        if($request->city != null && DB::table('cities')->where('name', $request->city)->first() == null){
             DB::table('cities')->insert(['name' => $request->city]);
         }
         if($request->bus != null && $request->number != null && $request->seats != null && $request->status != null){
@@ -189,6 +190,12 @@ class SiteController extends Controller
                 'seats' => $request->seats,
                 'status' => $request->status,
                 ]);
+        }
+
+        if($request->carrier != null && DB::table('carriers')
+                ->where('name', $request->carrier)->first() == null){
+
+            DB::table('carriers')->insert(['name' => $request->carrier]);
         }
         return redirect('/stuff/other');
     }
