@@ -24,7 +24,7 @@ public class DishRepository
             var strings = File.ReadAllLines(_filePath);
             _data = strings.Select(line =>
             {
-                var array = line.Split(',');
+                var array = line.Split('@');
                 return new Dish
                 {
                     Id = Guid.Parse(array[0]),
@@ -67,7 +67,7 @@ public class DishRepository
                 var strings = File.ReadAllLines(_filePath);
                 _data = strings.Select(line =>
                 {
-                    var array = line.Split(',');
+                    var array = line.Split('@');
                     return new Dish
                     {
                         Id = Guid.Parse(array[0]),
@@ -135,7 +135,7 @@ public class DishRepository
     /// <param name="id">Идентификатор записи о языках программирования</param>
     private void Save()
     {
-        var strings = _data.Select(d => $"{d.Id},{d.Name},{d.Description},{d.Type}");
+        var strings = _data.Select(d => $"{d.Id}@{d.Name}@{d.Description}@{d.Type}");
         File.WriteAllLines(_filePath, strings);
 
     }

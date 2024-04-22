@@ -1,7 +1,28 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Hp\\Desktop\\1-razor-pages-RAdKuzur\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\praktik\\desktop\\astu\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\praktik\\desktop\\astu\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\test.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\test.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\praktik\\desktop\\astu\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\database.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\database.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\praktik\\desktop\\astu\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\data\\dishrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\data\\dishrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|c:\\users\\praktik\\desktop\\astu\\astu\\\u043C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\lab1\\pages\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF7DC812-B236-4CB5-9F13-F66FADD409A9}|Lab1\\Lab1.csproj|solutionrelative:lab1\\pages\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "Lab1\\Pages\\Edit.cshtml.cs",
+              "ToolTip": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml.cs",
+              "RelativeToolTip": "Lab1\\Pages\\Edit.cshtml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T08:39:12.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Lab1\\Pages\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Pages\\Edit.cshtml",
+              "RelativeToolTip": "Lab1\\Pages\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-22T07:45:12.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "test.json",
+              "DocumentMoniker": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\test.json",
+              "RelativeDocumentMoniker": "Lab1\\test.json",
+              "ToolTip": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\test.json",
+              "RelativeToolTip": "Lab1\\test.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-22T07:43:14.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "database.json",
+              "DocumentMoniker": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\database.json",
+              "RelativeDocumentMoniker": "Lab1\\database.json",
+              "ToolTip": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\database.json",
+              "RelativeToolTip": "Lab1\\database.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-22T07:43:13.515Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DishRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Data\\DishRepository.cs",
+              "RelativeDocumentMoniker": "Lab1\\Data\\DishRepository.cs",
+              "ToolTip": "C:\\Users\\Praktik\\Desktop\\ASTU\\ASTU\\\u041C\u043E\u0440\u043E\u0437\u043E\u0432 6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\Lab1\\Data\\DishRepository.cs",
+              "RelativeToolTip": "Lab1\\Data\\DishRepository.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwEgAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T07:39:24.713Z"
             }
           ]
         }

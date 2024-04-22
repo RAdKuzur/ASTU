@@ -7,8 +7,10 @@
     
     <h1 class="display-4">Редактирование</h1>
     <p>Редактирование</p>
-    <form method="post" action="~/edit">
-        <label>Название блюда:</label><br/>
+    @if (Model.flag == 1)
+    {
+        <form method="post" action="~/edit">
+            <label>Название блюда:</label><br/>
         <input type="hidden" value="@Model.dish.Id" name="id" /><br />
         <input type="text" value="@Model.dish.Name" name="name"/><br />
         <label>Ингридиенты</label><br />
@@ -18,5 +20,10 @@
         <a asp-page="/Watch">
             <button type="submit" class="btn btn-danger">Редактировать</button>
         </a>
-    </form>
+        </form>
+    }
+    else
+    {
+        <p>Страница редактирования недоступна для прямого доступа</p>
+    }
 </div>
