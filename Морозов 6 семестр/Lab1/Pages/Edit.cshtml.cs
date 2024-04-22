@@ -18,7 +18,7 @@ namespace Lab1.Pages
         public void OnGet(Guid id)
         {
             dish = _db.Find(id);
-            if (id == Guid.Empty) {
+            if (id == Guid.Empty || dish.Id == Guid.Empty) {
                 flag = 0;
             }
             else
