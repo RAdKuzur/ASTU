@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Redirect;
+use DateTime;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
@@ -155,47 +156,89 @@ class SiteController extends Controller
     public function run()
     {
         $login_id = session('login');
+
         $query = DB::table('customers')->where('id', $login_id)->first();
         if($query->role != 0){
-            //dd(DB::table('runs')->get());
-            return view('run')->with([]);
+            $routes = DB::table('routes')
+                ->join('cities as departure', DB::raw('CAST(routes.departure_city_id AS bigint)'), '=', 'departure.id')
+                ->join('cities as arrival', DB::raw('CAST(routes.arrival_city_id AS bigint)'), '=', 'arrival.id')
+                ->select('routes.*', 'departure.name as departure_city', 'arrival.name as arrival_city')
+                ->get();
+            $carriers = DB::table('carriers')->get();
+            $buses = DB::table('buses')
+                ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+                ->select('buses.id','model_buses.brand', 'model_buses.model',
+                    'buses.number', 'buses.seats', 'buses.status')
+                ->get();
+              return view('run')->with([
+                  'carriers' => $carriers,
+                  'buses' => $buses,
+                  'routes' => $routes
+            ]);
         }
         else {
             return redirect('/main');
         }
     }
     public function run_post(Request $request){
-        dd($request);
+        $date_time_obj_arr = DateTime::createFromFormat('Y-m-d\TH:i', $request->dep_time);
+        $date_time_obj_dep = DateTime::createFromFormat('Y-m-d\TH:i', $request->arr_time);
+        // Преобразуем дату и время в формат SQL
+        $sql_date_arr = $date_time_obj_arr->format('Y-m-d H:i:s');
+        $sql_date_dep = $date_time_obj_dep->format('Y-m-d H:i:s');
+         DB::table('runs')->insert(['driver_id' => 1,
+            'bus_id' => $request->bus,
+            'status' => 0,
+            'route_id' => $request->route,
+            'carrier_id' => $request->carrier,
+            'departure_time' => $sql_date_dep,
+            'arrival_time' => $sql_date_arr
+        ]);
+         $seat = DB::table('buses')->where('id',$request->bus)->first('seats');
+         for($i = 1; $i < $seat; $i++){
+
+         }
     }
     public function other(){
         $first_counter = 1;
         $second_counter = 1;
         $third_counter = 1;
         $cities = DB::table('cities')->get();
-        $buses =  DB::table('buses')->get();
         $model_buses =  DB::table('model_buses')->get();
         $carriers = DB::table('carriers')->get();
+        $buses_all = DB::table('buses')
+            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+            ->select('model_buses.brand', 'model_buses.model', 'buses.number', 'buses.seats', 'buses.status')
+            ->get();
+
         return view("other")->with(['cities' => $cities, 'first_counter' => $first_counter,
-            'buses' => $buses, 'second_counter' => $second_counter,
+            'buses' => $buses_all, 'second_counter' => $second_counter,
             'model_buses' => $model_buses,
-            'carriers' => $carriers, 'third_counter' => $third_counter]);
+            'carriers' => $carriers, 'third_counter' => $third_counter
+
+        ]);
     }
     public function other_post(Request $request){
         if($request->city != null && DB::table('cities')->where('name', $request->city)->first() == null){
             DB::table('cities')->insert(['name' => $request->city]);
         }
         if($request->bus != null && $request->number != null && $request->seats != null && $request->status != null){
-            DB::table('buses')->insert(['model_id' => $request->bus,
+            $bus_id = DB::table('buses')->insertGetId(['model_id' => $request->bus,
                 'number' => $request->number,
                 'seats' => $request->seats,
                 'status' => $request->status,
                 ]);
+            for($i = 1; $i<= $request->seats; $i++){
+                DB::table('seats')->insert(['bus_id' => $bus_id, 'number' => $i]);
+            }
         }
-
         if($request->carrier != null && DB::table('carriers')
                 ->where('name', $request->carrier)->first() == null){
-
             DB::table('carriers')->insert(['name' => $request->carrier]);
+        }
+        if ($request->city_1 != null && $request->city_2 != null && $request->city_1 != $request->city_2){
+            DB::table('routes')->insert(['departure_city_id' => $request->city_1,
+                'arrival_city_id' => $request->city_2]);
         }
         return redirect('/stuff/other');
     }

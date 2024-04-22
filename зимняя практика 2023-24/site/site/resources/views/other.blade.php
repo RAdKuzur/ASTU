@@ -1,6 +1,5 @@
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +28,6 @@
         </div>
     </div>
 </header>
-</body>
 <div id = "div-other-1">
     <div id = "div-2">
         <h3>Добавление городов:</h3>
@@ -100,11 +98,14 @@
             @foreach($buses as $bus)
                 <tr>
                     <td>{{$second_counter++}}</td>
-                    <td>{{$bus->model_id}}</td>
+                    <td>{{$bus->brand}}  {{$bus->model}}</td>
                     <td>{{$bus->number}}</td>
                     <td>{{$bus->seats}}</td>
-                    <td>{{$bus->status}}</td>
-                    <td>
+                    @if($bus->status == 1)
+                        <td>Готов к эксплуатации</td>
+                    @else
+                        <td>В ремонте/нуждается в ремонте</td>
+                    @endif
                 </tr>
             @endforeach
             </tbody>
@@ -130,7 +131,6 @@
             </tr>
             </thead>
             <tbody>
-
             @foreach($carriers as $carrier)
                 <tr>
                     <td>{{$third_counter++}}</td>
@@ -138,9 +138,35 @@
                     <td>
                 </tr>
             @endforeach
+
             </tbody>
         </table>
     </div>
 </div>
-
+<div id = "div-other-1">
+    <div id = "div-2">
+        <h3>Добавление маршрута:</h3>
+        <form action = "{{route('other_post')}}" method="POST">
+            @csrf
+            <h3>Выберите города отбытия</h3>
+            <select class="form-select" aria-label="Выберите город" id = "select-box" name = "city_1">
+                <option selected>Выберите город отправления</option>
+                @foreach($cities as $city)
+                    <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
+            </select>
+            </br>
+            <h3>Выберите города прибытия</h3>
+            <select class="form-select" aria-label="Выберите город" id = "select-box" name = "city_2">
+                <option selected>Выберите город прибытия</option>
+                @foreach($cities as $city)
+                    <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
+            </select>
+            </br>  </br>
+            <button type="submit" class="btn btn-primary">Добавить маршрут</button>
+        </form>
+    </div>
+</div>
+</body>
 </html>
