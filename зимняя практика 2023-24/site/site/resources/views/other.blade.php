@@ -165,6 +165,25 @@
             </select>
             </br>  </br>
             <button type="submit" class="btn btn-primary">Добавить маршрут</button>
+            </br>  </br>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Город отправления</th>
+                    <th scope="col">Город прибытия</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($routes as $route)
+                    <tr>
+                        <td>{{$route->departure_city_name}}</td>
+                        <td>{{$route->arrival_city_name}}</td>
+                        <td>
+                    </tr>
+                @endforeach
+
+                </tbody>
+            </table>
         </form>
     </div>
 </div>

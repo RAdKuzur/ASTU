@@ -56,6 +56,34 @@
             </div>
         </div>
         </form>
+        <div id = "div-1">
+            <div id = "div-2">
+                <h3>Расписание рейсов:</h3>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Маршрут</th>
+                        <th scope="col">Автобус</th>
+                        <th scope="col">Перевозчик</th>
+                        <th scope="col">Время отправления</th>
+                        <th scope="col">Время прибытия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($runs_all as $run)
+                        <tr>
+                            <td>{{$run->departure_city}}---{{$run->arrival_city}}</td>
+                            <td>{{$run->brand}} {{$run->model}} {{$run->number}}</td>
+                            <td>{{$run->name}}</td>
+                            <td>{{$run->departure_time}}</td>
+                            <td>{{$run->arrival_time}}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
         <div id = "div-button-3"><h4>Доступные билеты</h4>
             <table class="table">
                 <thead>
@@ -69,7 +97,7 @@
                 <tbody>
                 @if ($runs != null)
                 @foreach($runs as $run)
-                    @if($run->status == 'Scheduled')
+                    @if($run->status == 0)
                     <tr>
                         <th scope="row"></th>
                         <td>{{$run->departure_time}}</td>

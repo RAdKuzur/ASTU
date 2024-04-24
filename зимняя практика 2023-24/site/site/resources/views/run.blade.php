@@ -32,6 +32,29 @@
 <div id = "div-1">
     <div id = "div-2">
         <h3>Расписание рейсов:</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Маршрут</th>
+                <th scope="col">Автобус</th>
+                <th scope="col">Перевозчик</th>
+                <th scope="col">Время отправления</th>
+                <th scope="col">Время прибытия</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($runs as $run)
+                <tr>
+                    <td>{{$run->departure_city}}---{{$run->arrival_city}}</td>
+                    <td>{{$run->brand}} {{$run->model}} {{$run->number}}</td>
+                    <td>{{$run->name}}</td>
+                    <td>{{$run->departure_time}}</td>
+                    <td>{{$run->arrival_time}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+
     </div>
 </div>
 <div id = "div-1">
@@ -67,6 +90,10 @@
                 <h5 >Укажите время отправления и прибытия</h5>
                 <input type="datetime-local" placeholder="время отправления" name = "dep_time"/>
                 <input type="datetime-local" placeholder="время прибытия" name = "arr_time"/>
+            </div>
+            <div>
+                <h5 >Укажите цену билета</h5>
+                <input type="text" placeholder="Цена билета" name = "price"/>
             </div>
             </br>
             </br>

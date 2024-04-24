@@ -62,9 +62,9 @@
                 @foreach($bookings as $booking)
                     <tr>
                         <td>{{$booking->id}}</td>
-                        <td>{{$booking->seat_run_id}}</td>
-                        <td>{{$booking->customer_id}}</td>
-                        <td>{{$booking->carrier_id}}</td>
+                        <td>{{$booking->number}}</td>
+                        <td>{{$login_query->surname}} {{$login_query->name}}</td>
+                        <td>{{$booking->price}}</td>
                     </tr>
                 @endforeach
             @endif
