@@ -31,7 +31,6 @@
         <form action = "{{route('booking')}}" method="POST">
             @csrf
         <div id = "div-button-2"><h4>Выберите направление</h4>
-            <div id = "title-1"><h5>Город отправления                                      Город прибытия                                           Дата отправления</h5></div>
             <div id = "selector-1">
             <select class="form-select" aria-label="Default select example" id = "select-box" name = "city_1">
                 <option selected>Выберите город отправления</option>
@@ -45,12 +44,6 @@
                     <option value="{{$city->id}}">{{$city->name}}</option>
                 @endforeach
 
-            </select>
-            <select class="form-select" aria-label="Default select example" id = "select-box" name = "date_1">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
             </select>
             <button type="submit" class="btn btn-primary">Бронировать</button>
             </div>

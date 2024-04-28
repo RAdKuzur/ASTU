@@ -43,8 +43,21 @@ class SiteController extends Controller
             ->join('tickets', 'seat_runs.id', '=', 'tickets.seat_run_id')
             ->select('seats.*', 'seat_runs.*', 'tickets.*')
             ->get();
-
+        $results = DB::table('tickets')
+            ->join('seat_runs', 'tickets.seat_run_id', '=', 'seat_runs.id')
+            ->join('runs', 'seat_runs.run_id', '=', 'runs.id')
+            ->join('routes', 'runs.route_id', '=', 'routes.id')
+            ->join('cities as departure_city', 'routes.departure_city_id', '=', 'departure_city.id')
+            ->join('cities as arrival_city', 'routes.arrival_city_id', '=', 'arrival_city.id')
+            ->join('seats', 'seat_runs.seat_id', '=', 'seats.id')
+            ->join('buses', 'seats.bus_id', '=', 'buses.id')
+            ->join('model_buses', 'buses.id', '=', 'model_buses.id')
+            ->select('tickets.id', 'runs.departure_time', "runs.arrival_time" , 'seats.number','seat_runs.customer_id',
+                'seat_runs.price',
+                'departure_city.name as departure_city_name', 'arrival_city.name as arrival_city_name', 'model_buses.brand' ,
+                'model_buses.model', 'buses.number as reg_number')->get();
         $bookings = $results->where('customer_id',$login_id);
+
         return view('profile')->with(['login_query'=>$login_query, 'bookings' => $bookings]);
     }
     public function profile_post(){
@@ -52,7 +65,6 @@ class SiteController extends Controller
         return redirect('/login');
     }
     public function register_show(){
-
         return view('register');
     }
     public function register_post(Request $request){
@@ -72,7 +84,6 @@ class SiteController extends Controller
         return redirect('/login');
     }
     public function main_show(){
-
         return view('main');
     }
     public function contacts(){
@@ -106,11 +117,13 @@ class SiteController extends Controller
                     ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
                         'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
                     ->get();
+
                 return view('booking')->with([
                     'cities' => $cities,
                     'runs_all' => $runs_all,
                     'runs' => $runs
                 ]);
+
     }
     public function booking_post(Request $request){
         $cities = DB::table('cities')->get();
@@ -142,7 +155,6 @@ class SiteController extends Controller
             ->join('seat_runs', 'seats.id', '=', 'seat_runs.seat_id')
             ->select('seats.*', 'seat_runs.*')
             ->get();
-
         $empty_seats = $seats_all->where('run_id', $id)->where('flag' , 0);
         return view('bookingId')->with(['id' => $id, 'empty_seats' => $empty_seats]);
     }
@@ -155,8 +167,6 @@ class SiteController extends Controller
         $empty_seats = $seats_all->where('run_id', $id)
             ->where('number', $request->seat)
             ->where('flag' , 0)->first();
-
-        //dd($empty_seats);
         DB::table('seat_runs')->where('id', $empty_seats->id)->update(['flag' => 1]);
         DB::table('tickets')->insert(['seat_run_id'=> $empty_seats->id,
             'carrier_id' => 0,
@@ -178,7 +188,7 @@ class SiteController extends Controller
         $users = DB::table('customers')->where('id', $login_id)->first();
         if($users->password == $password) {
             $seat =  DB::table('tickets')->where('id', $code)->first();
-            DB::table('seat_runs')->where('seat_id', $seat->seat_run_id)->update(['flag' => 0]);
+            DB::table('seat_runs')->where('id', $seat->seat_run_id)->update(['flag' => 0]);
             DB::table('tickets')->where('id', $code)->delete();
         }
         return redirect('/purchase');
@@ -198,7 +208,6 @@ class SiteController extends Controller
     }
     public function run()
     {
-
         $login_id = session('login');
         $query = DB::table('customers')->where('id', $login_id)->first();
         if($query->role != 0){
@@ -216,14 +225,15 @@ class SiteController extends Controller
                 ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
                 ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
                 ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
-                    'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
+                    'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city', 'runs.id as run_id')
                 ->get();
             $buses = DB::table('buses')
                 ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
                 ->select('buses.id','model_buses.brand', 'model_buses.model',
                     'buses.number', 'buses.seats', 'buses.status')
                 ->get();
-              return view('run')->with([
+            return view('run')->with([
+                  'carriers' => $carriers,
                   'carriers' => $carriers,
                   'buses' => $buses,
                   'routes' => $routes,
@@ -235,38 +245,49 @@ class SiteController extends Controller
         }
     }
     public function run_post(Request $request){
-        $seat_bus =  DB::table('buses')
-            ->join('seats', 'buses.id', '=', 'seats.bus_id')
-            ->select('buses.*', 'seats.*')
-            ->get();
-        $seat_bus = $seat_bus->where('bus_id', $request->bus)->first();
-        $seat_first_id = $seat_bus->id;
-        $price = $request->price;
-        $date_time_obj_arr = DateTime::createFromFormat('Y-m-d\TH:i', $request->dep_time);
-        $date_time_obj_dep = DateTime::createFromFormat('Y-m-d\TH:i', $request->arr_time);
-        $sql_date_arr = $date_time_obj_arr->format('Y-m-d H:i:s');
-        $sql_date_dep = $date_time_obj_dep->format('Y-m-d H:i:s');
-        $id = DB::table('runs')->insertGetId(['driver_id' => 1,
-            'bus_id' => $request->bus,
-            'status' => 0,
-            'route_id' => $request->route,
-            'carrier_id' => $request->carrier,
-            'departure_time' => $date_time_obj_dep,
-            'arrival_time' => $date_time_obj_arr
-        ]);
-
-        $seat = DB::table('buses')->where('id',$request->bus)->first('seats');
-        for($i = 1; $i <= $seat->seats; $i++){
-            DB::table('seat_runs')->insert([
-                 'seat_id' => $seat_first_id,
-                 'run_id' => $id,
-                 'customer_id' => session('login'),
-                 'flag' => 0,
-                 'price' => $price
-            ]);
-            $seat_first_id++;
+        if ($request->delete != null) {
+            $tickets = DB::table('tickets')->get();
+            foreach ($tickets as $ticket) {
+                $ticket_id =  DB::table('seat_runs')->where('id', $ticket->seat_run_id)->first();
+                if($ticket_id->run_id == $request->delete){
+                    DB::table('tickets')->where('id',$ticket->id)->delete();
+                }
+            }
+            DB::table('runs')->where('id', $request->delete)->delete();
+            DB::table('seat_runs')->where('run_id', $request->delete)->delete();
         }
-        return redirect('/stuff/run');
+        $seat_bus = DB::table('buses')
+                ->join('seats', 'buses.id', '=', 'seats.bus_id')
+                ->select('buses.*', 'seats.*')
+                ->get();
+        $seat_bus = $seat_bus->where('bus_id', $request->bus)->first();
+        if($seat_bus != null) {
+            $seat_first_id = $seat_bus->id;
+            $price = $request->price;
+            $date_time_obj_arr = DateTime::createFromFormat('Y-m-d\TH:i', $request->dep_time);
+            $date_time_obj_dep = DateTime::createFromFormat('Y-m-d\TH:i', $request->arr_time);
+            $sql_date_arr = $date_time_obj_arr->format('Y-m-d H:i:s');
+            $sql_date_dep = $date_time_obj_dep->format('Y-m-d H:i:s');
+            $id = DB::table('runs')->insertGetId(['driver_id' => 1,
+                'bus_id' => $request->bus,
+                'status' => 0,
+                'route_id' => $request->route,
+                'carrier_id' => $request->carrier,
+                'departure_time' => $sql_date_dep,
+                'arrival_time' => $sql_date_arr
+            ]);
+            $seat = DB::table('buses')->where('id', $request->bus)->first('seats');
+            for ($i = 1; $i <= $seat->seats; $i++) {
+                DB::table('seat_runs')->insert([
+                    'seat_id' => $seat_first_id,
+                    'run_id' => $id,
+                    'customer_id' => session('login'),
+                    'flag' => 0,
+                    'price' => $price
+                ]);
+                $seat_first_id++;
+            }
+        }
         return redirect('/stuff/run');
     }
     public function other(){
@@ -291,7 +312,6 @@ class SiteController extends Controller
             'model_buses' => $model_buses,
             'carriers' => $carriers, 'third_counter' => $third_counter,
             'routes' => $routes
-
         ]);
     }
     public function other_post(Request $request){

@@ -32,6 +32,8 @@
 <div id = "div-1">
     <div id = "div-2">
         <h3>Расписание рейсов:</h3>
+        <form action = "{{route('run_post')}}" method="POST">
+            @csrf
         <table class="table">
             <thead>
             <tr>
@@ -40,6 +42,7 @@
                 <th scope="col">Перевозчик</th>
                 <th scope="col">Время отправления</th>
                 <th scope="col">Время прибытия</th>
+                <th scope="col">Действия</th>
             </tr>
             </thead>
             <tbody>
@@ -50,11 +53,12 @@
                     <td>{{$run->name}}</td>
                     <td>{{$run->departure_time}}</td>
                     <td>{{$run->arrival_time}}</td>
+                    <td><button type="submit" class="btn btn-danger" name = "delete" value= "{{$run->run_id}}">Удалить</button></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-
+        </form>
     </div>
 </div>
 <div id = "div-1">
@@ -73,7 +77,9 @@
             <select class="form-select" aria-label="Выберите автобус" id = "select-box" name = "bus">
                 <option selected>Выберите автобус</option>
                 @foreach($buses as $bus)
+                    @if($bus->status != 2)
                     <option value="{{$bus->id}}">{{$bus->brand}}  {{$bus->brand}}  {{$bus->number}}</option>
+                    @endif
                 @endforeach
             </select>
             </br>

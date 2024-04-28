@@ -52,9 +52,12 @@
             <thead>
             <tr>
                 <th scope="col">Код бронирования</th>
+                <th scope="col">Маршрут</th>
+                <th scope="col">Автобус</th>
                 <th scope="col">Место</th>
                 <th scope="col">Пассажир</th>
-                <th scope="col">Перевозчик</th>
+                <th scope="col">Время рейса</th>
+                <th scope="col">Цена за билет</th>
             </tr>
             </thead>
             <tbody>
@@ -62,8 +65,11 @@
                 @foreach($bookings as $booking)
                     <tr>
                         <td>{{$booking->id}}</td>
+                        <td>{{$booking->departure_city_name}}---{{$booking->arrival_city_name}}</td>
+                        <td>{{$booking->brand}} {{$booking->model}} {{$booking->reg_number}} </td>
                         <td>{{$booking->number}}</td>
                         <td>{{$login_query->surname}} {{$login_query->name}}</td>
+                        <td>{{$booking->departure_time}}  {{$booking->arrival_time}}</td>
                         <td>{{$booking->price}}</td>
                     </tr>
                 @endforeach
