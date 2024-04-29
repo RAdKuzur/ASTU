@@ -187,5 +187,70 @@
         </form>
     </div>
 </div>
+<div id = "div-other-1">
+    <div id = "div-2">
+        <h3>Добавление пользователей:</h3>
+        <form action = "{{route('other_post')}}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Введите почту</label>
+                <input class="form-control" type="text" name = "user_email">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Введите пароль</label>
+                <input class="form-control" type="text" name = "user_password">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Фамилия</label>
+                <input type="text" class="form-control" id="surname" name = "surname">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Имя</label>
+                <input type="text" class="form-control" id="name"  name = "name">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Серия паспорта</label>
+                <input type="text" class="form-control" id="serial"  name = "serial">
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Номер паспорта</label>
+                <input type="text" class="form-control" id="number"  name = "number">
+            </div>
+            <button type="submit" class="btn btn-primary">Добавить пользователя</button>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Почта</th>
+                <th scope="col">Пароль</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Серия и номер паспорта</th>
+                <th scope="col">Роль</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            @foreach($customers as $customer)
+                <tr>
+                    <td>{{$fourth_counter++}}</td>
+                    <td>{{$customer->email}}</td>
+                    <td>{{$customer->password}}</td>
+                    <td>{{$customer->name}}</td>
+                    <td>{{$customer->surname}}</td>
+                    <td>{{$customer->passport_series}}  {{$customer->passport_number}}</td>
+                    @if($customer->role == 0)
+                        <td>Клиент</td>
+                    @else
+                        <td>Сотрудник</td>
+                    @endif
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

@@ -82,8 +82,8 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Город отправления</th>
-                    <th scope="col">Город прибытия</th>
+                    <th scope="col">Время отправления</th>
+                    <th scope="col">Время прибытия</th>
                     <th scope="col">Забронировать</th>
                     </tr>
                 </thead>

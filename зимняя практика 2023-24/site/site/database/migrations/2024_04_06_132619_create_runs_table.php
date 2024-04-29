@@ -16,8 +16,10 @@ return new class extends Migration
             $table->integer('driver_id');
             $table->integer('bus_id');
             $table->integer('route_id');
-            $table->time('departure_time');
-            $table->time('arrival_time');
+            //$table->time('departure_time');
+            //$table->time('arrival_time');
+            $table->datetime('departure_time');
+            $table->datetime('arrival_time');
             $table->string('status');
             $table->integer('carrier_id');
             $table->timestamps();

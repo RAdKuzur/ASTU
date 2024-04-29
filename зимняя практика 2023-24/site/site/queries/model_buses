@@ -1,29 +1,6 @@
 INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Mercedes-Benz', 'Sprinter', NOW(), NOW());
 INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Volvo', '9700', NOW(), NOW());
 INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Scania', 'Touring', NOW(), NOW());
-INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('MAN', 'Lion's Coach', NOW(), NOW());
+INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('MAN', 'Lions Coach', NOW(), NOW());
 INSERT INTO model_buses (brand, model, created_at, updated_at) VALUES ('Iveco', 'Crossway', NOW(), NOW());
-      <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Маршрут</th>
-                <th scope="col">Автобус</th>
-                <th scope="col">Перевозчик</th>
-                <th scope="col">Время отправления</th>
-                <th scope="col">Время прибытия</th>
-                <th scope="col">Цена за билет</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach($bookings as $booking)
-                    <tr>
-                        <td>{{$booking->id}}</td>
-                        <td>{{$booking->number}}</td>
-                        <td>{{$login_query->surname}} {{$login_query->name}}</td>
-                        <td>{{$booking->price}}</td>
-                        <td>{{$booking->price}}</td>
-                        <td>{{$booking->price}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+
