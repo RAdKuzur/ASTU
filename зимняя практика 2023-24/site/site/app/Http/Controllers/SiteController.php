@@ -16,6 +16,25 @@ use App\Models;
 // база данных testdb
 class SiteController extends Controller
 {
+
+    public function auto_run()
+    {
+        // функция автоматического изменения статуса рейсов
+        $tickets = DB::table('runs')->get();
+        foreach ($tickets as $ticket) {
+            $arr_time = strtotime($ticket->arrival_time);
+            $dep_time = strtotime($ticket->departure_time);
+            if($arr_time > time() && $dep_time < time()){
+                DB::table('runs')->where('id', $ticket->id)->update(['status' => 1]);
+            }
+            if($arr_time < time() && $dep_time < time()){
+                DB::table('runs')->where('id', $ticket->id)->update(['status' => 2]);
+            }
+            if($arr_time > time() && $dep_time > time()){
+                DB::table('runs')->where('id', $ticket->id)->update(['status' => 0]);
+            }
+        }
+    }
     public function login_show(){
         return view('login');
     }
@@ -77,7 +96,7 @@ class SiteController extends Controller
     public function register_show(){
         return view('register');
     }
-     public function register_post(Request $request){
+    public function register_post(Request $request){
         $name = $request->name;
         $surname = $request->surname;
         $serial = $request->serial;
@@ -115,6 +134,7 @@ class SiteController extends Controller
         return view('purchase');
     }
     public function booking(){
+        $this->auto_run();
         if (session('login') != null) {
             $cities = DB::table('cities')->get();
             $runs = null;
@@ -227,7 +247,7 @@ class SiteController extends Controller
         $login_id = session('login');
         $users = DB::table('customers')->where('id', $login_id)->first();
         $ticket = DB::table('tickets')->where('id', $code)->first();
-        if($users->password == $password) {
+        if($users->password == $password && $ticket != null) {
             if($ticket->customer_id == $login_id) {
                 $seat = DB::table('tickets')->where('id', $code)->first();
                 DB::table('seat_runs')->where('id', $seat->seat_run_id)->update(['flag' => 0]);
@@ -237,6 +257,7 @@ class SiteController extends Controller
         return redirect('/purchase');
     }
     public function schedule(){
+        $this->auto_run();
         $runs = DB::table('runs')
             ->join('routes', 'runs.route_id', '=', 'routes.id')
             ->join('buses', 'runs.bus_id', '=', 'buses.id')
@@ -251,6 +272,7 @@ class SiteController extends Controller
     }
     public function run()
     {
+        $this->auto_run();
         if(session('login')!=null  && session('role') == 1) {
             $login_id = session('login');
             $query = DB::table('customers')->where('id', $login_id)->first();

@@ -42,6 +42,7 @@
                 <th scope="col">Перевозчик</th>
                 <th scope="col">Время отправления</th>
                 <th scope="col">Время прибытия</th>
+                <th scope="col">Статус</th>
                 <th scope="col">Действия</th>
             </tr>
             </thead>
@@ -53,6 +54,15 @@
                     <td>{{$run->name}}</td>
                     <td>{{$run->departure_time}}</td>
                     <td>{{$run->arrival_time}}</td>
+                    @if($run->status == "0")
+                        <td>Рейс запланирован</td>
+                    @endif
+                    @if($run->status == "1")
+                        <td>В пути</td>
+                    @endif
+                    @if($run->status == "2")
+                        <td>Рейс завершён</td>
+                    @endif
                     <td><button type="submit" class="btn btn-danger" name = "delete" value= "{{$run->run_id}}">Удалить</button></td>
                 </tr>
             @endforeach
