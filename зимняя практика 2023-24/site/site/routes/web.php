@@ -52,6 +52,7 @@ Route::post('/stuff/run',  [SiteController::class, 'run_post'])->name('run_post'
 Route::get('/stuff/other',  [SiteController::class, 'other'])->name('other_post');
 Route::post('/stuff/other',  [SiteController::class, 'other_post'])->name('other_post');
 
+Route::get('/stuff/comment',  [SiteController::class, 'comment'])->name('comment');
 
 Route::get('/', function () {
     return redirect("main");

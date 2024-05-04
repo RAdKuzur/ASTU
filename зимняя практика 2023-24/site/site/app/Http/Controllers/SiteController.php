@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\User;
+use Exception;
 use Redirect;
 use DateTime;
 use GuzzleHttp\Client;
@@ -124,7 +125,7 @@ class SiteController extends Controller
             if ($request->comment) {
                 DB::table('comments')->insert(['comment' => $request->comment, 'customer_id' => $login_id]);
             }
-            return redirect('/main');
+            return redirect('/contacts');
         }
         else {
             return redirect('/login');
@@ -160,10 +161,15 @@ class SiteController extends Controller
         }
     }
     public function booking_post(Request $request){
+
         if(session('login') != null) {
             $cities = DB::table('cities')->get();
             $departure_city = $request->city_1;
             $arrive_city = $request->city_2;
+            if($departure_city == 'Выберите город отправления'
+                || $arrive_city == 'Выберите город назначения') {
+                return redirect('/purchase');
+            }
             $route = DB::table('routes')->where('departure_city_id', $departure_city)
                 ->where('arrival_city_id', $arrive_city)->first();
             if ($route != null) {
@@ -180,13 +186,15 @@ class SiteController extends Controller
                     ->get();
                 $runs = DB::table('runs')->where('route_id', $route_id)->get();
                 return view('booking')->with(['runs' => $runs, 'cities' => $cities, 'runs_all' => $runs_all]);
-            } else {
+            }
+            else {
                 return redirect('/purchase/booking');
             }
         }
         else {
             return redirect('/login');
         }
+
     }
     public function booking_id($id)
     {
@@ -244,6 +252,9 @@ class SiteController extends Controller
     public function cancelling_post(Request $request){
         $code = $request->code;
         $password = $request->password;
+        if (!(is_numeric($code) && (int)$code == $code)) {
+           return redirect('/purchase');
+        }
         $login_id = session('login');
         $users = DB::table('customers')->where('id', $login_id)->first();
         $ticket = DB::table('tickets')->where('id', $code)->first();
@@ -254,7 +265,7 @@ class SiteController extends Controller
                 DB::table('tickets')->where('id', $code)->delete();
             }
         }
-        return redirect('/purchase');
+        return redirect('/purchase/cancelling');
     }
     public function schedule(){
         $this->auto_run();
@@ -329,33 +340,38 @@ class SiteController extends Controller
                 ->select('buses.*', 'seats.*')
                 ->get();
         $seat_bus = $seat_bus->where('bus_id', $request->bus)->first();
-        if($seat_bus != null) {
+        if($seat_bus != null && $request->price != null &&  $request->carrier != 'Выберите перевозчика'
+        && $request->route != 'Выберите маршрут' && $request->arr_time != null && $request->dep_time != null)
+        {
             $seat_first_id = $seat_bus->id;
             $price = $request->price;
             $date_time_obj_arr = DateTime::createFromFormat('Y-m-d\TH:i', $request->arr_time);
             $date_time_obj_dep = DateTime::createFromFormat('Y-m-d\TH:i', $request->dep_time);
             $sql_date_arr = $date_time_obj_arr->format('Y-m-d H:i:s');
             $sql_date_dep = $date_time_obj_dep->format('Y-m-d H:i:s');
-            $id = DB::table('runs')->insertGetId(['driver_id' => 1,
-                'bus_id' => $request->bus,
-                'status' => 0,
-                'route_id' => $request->route,
-                'carrier_id' => $request->carrier,
-                'departure_time' => $sql_date_dep,
-                'arrival_time' => $sql_date_arr
-            ]);
-            $seat = DB::table('buses')->where('id', $request->bus)->first('seats');
-            for ($i = 1; $i <= $seat->seats; $i++) {
-                DB::table('seat_runs')->insert([
-                    'seat_id' => $seat_first_id,
-                    'run_id' => $id,
-                    'customer_id' => session('login'),
-                    'flag' => 0,
-                    'price' => $price
+            if($sql_date_dep < $sql_date_arr) {
+                $id = DB::table('runs')->insertGetId(['driver_id' => 1,
+                    'bus_id' => $request->bus,
+                    'status' => 0,
+                    'route_id' => $request->route,
+                    'carrier_id' => $request->carrier,
+                    'departure_time' => $sql_date_dep,
+                    'arrival_time' => $sql_date_arr
                 ]);
-                $seat_first_id++;
+                $seat = DB::table('buses')->where('id', $request->bus)->first('seats');
+                for ($i = 1; $i <= $seat->seats; $i++) {
+                    DB::table('seat_runs')->insert([
+                        'seat_id' => $seat_first_id,
+                        'run_id' => $id,
+                        'customer_id' => session('login'),
+                        'flag' => 0,
+                        'price' => $price
+                    ]);
+                    $seat_first_id++;
+                }
             }
         }
+
         return redirect('/stuff/run');
     }
     public function other()
@@ -392,29 +408,39 @@ class SiteController extends Controller
         }
     }
     public function other_post(Request $request){
-        if($request->city != null && DB::table('cities')->where('name', $request->city)->first() == null){
+        if($request->city != null && DB::table('cities')->where('name', $request->city)->first() == null) {
             DB::table('cities')->insert(['name' => $request->city]);
         }
-        if($request->bus != null && $request->number != null && $request->seats != null && $request->status != null){
-            $bus_id = DB::table('buses')->insertGetId(['model_id' => $request->bus,
-                'number' => $request->number,
-                'seats' => $request->seats,
-                'status' => $request->status,
+        if($request->bus != null && $request->bus != 'Выберите автобус' && $request->number != null
+            && $request->seats != null && $request->status != null && $request->status != 'Выберите статус') {
+            if (DB::table('buses')->where('number', $request->number)->first() == null) {
+                $bus_id = DB::table('buses')->insertGetId(['model_id' => $request->bus,
+                    'number' => $request->number,
+                    'seats' => $request->seats,
+                    'status' => $request->status,
                 ]);
-            for($i = 1; $i<= $request->seats; $i++){
-                DB::table('seats')->insert(['bus_id' => $bus_id, 'number' => $i]);
+                for ($i = 1; $i <= $request->seats; $i++) {
+                    DB::table('seats')->insert(['bus_id' => $bus_id, 'number' => $i]);
+                }
             }
         }
         if($request->carrier != null && DB::table('carriers')
                 ->where('name', $request->carrier)->first() == null){
             DB::table('carriers')->insert(['name' => $request->carrier]);
         }
-        if ($request->city_1 != null && $request->city_2 != null && $request->city_1 != $request->city_2){
-            DB::table('routes')->insert(['departure_city_id' => $request->city_1,
-                'arrival_city_id' => $request->city_2]);
+        if ($request->city_1 != null && $request->city_2 != null && $request->city_1 != $request->city_2
+            && $request->city_1 != 'Выберите город отправления'  && $request->city_2 != 'Выберите город прибытия'
+        ){
+            if(DB::table('routes')
+                    ->where('departure_city_id', $request->city_1)
+                    ->where('arrival_city_id', $request->city_2)->first() == null)
+            {
+                DB::table('routes')->insert(['departure_city_id' => $request->city_1,
+                    'arrival_city_id' => $request->city_2]);
+            }
         }
         if ($request->user_email != null && $request->user_password != null && $request->name != null
-            && $request->surname != null && $request->serial != null && $request->number!= null)
+            && $request->surname != null && $request->serial != null && $request->number != null)
         {
             $name = $request->name;
             $surname = $request->surname;
@@ -422,16 +448,29 @@ class SiteController extends Controller
             $number = $request->number;
             $login = $request->user_email;
             $password = $request->user_password;
-            DB::table('customers')->insert([
-                'email' => $login,
-                'password' => $password,
-                'name' => $name,
-                'surname' => $surname,
-                'passport_series' => $serial,
-                'passport_number' => $number,
-                'role' => 1
-            ]);
+            if(DB::table('customers')
+                    ->where('email', $login)
+                    ->first() == null) {
+                DB::table('customers')->insert([
+                    'email' => $login,
+                    'password' => $password,
+                    'name' => $name,
+                    'surname' => $surname,
+                    'passport_series' => $serial,
+                    'passport_number' => $number,
+                    'role' => 1
+                ]);
+            }
         }
         return redirect('/stuff/other');
+    }
+    public function comment()
+    {
+        $counter = 1;
+        $comments = DB::table('comments')
+            ->join('customers', 'comments.customer_id', '=', 'customers.id')
+            ->select('comments.*', 'customers.surname', 'customers.name', 'customers.email')
+            ->get();
+        return view('comment')->with(['comments' => $comments, 'counter' => $counter]);
     }
 }
