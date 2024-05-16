@@ -17,7 +17,11 @@ namespace LAB_3_SADCHIKOV
         {
             InitializeComponent();
         }
-
+        private Random random = new Random();
+        private void ChangeFormColor()
+        {
+            this.BackColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             if (checkedListBox2.GetItemChecked(0))
@@ -37,7 +41,7 @@ namespace LAB_3_SADCHIKOV
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            int counter = 0;
+            int counter = 0, counter_2 = 0;
              label2.Text = "";
              for (int i = 0; i < checkedListBox3.Items.Count; i++)
              {
@@ -73,12 +77,13 @@ namespace LAB_3_SADCHIKOV
             if (counter > 1)
                 {
                 label2.Text = label2.Text + " ARE ";
+                ChangeFormColor();
                 }
              else
              {
                 label2.Text = label2.Text + " IS ";
             }
-            if (checkedListBox1.GetItemChecked(0))
+            if (checkedListBox1.GetItemChecked(0)) 
             {
                 label2.Text = label2.Text + " " +checkedListBox1.Items[0].ToString();
             }
@@ -95,13 +100,18 @@ namespace LAB_3_SADCHIKOV
             {
                 if (checkedListBox4.GetItemChecked(i))
                 {
+                    counter_2++;
                     label2.Text = label2.Text + " " + checkedListBox4.Items[i].ToString();
                 }
 
             }
-
+            if (counter_2 > 1)
+            {
+                ChangeFormColor();
+            }
 
 
         }
+
     }
 }

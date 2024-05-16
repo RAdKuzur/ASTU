@@ -13,7 +13,6 @@ C:\Users\Hp\Desktop\ASTU\Технология программирования (
 C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\bin\Debug\LAB_3_SADCHIKOV.exe
 C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\bin\Debug\LAB_3_SADCHIKOV.pdb
 C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\obj\Debug\LAB_3_SADCHIKOV.csproj.AssemblyReference.cache
-C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\obj\Debug\LAB_3_SADCHIKOV.csproj.SuggestedBindingRedirects.cache
 C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\obj\Debug\LAB_3_SADCHIKOV.Form1.resources
 C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\obj\Debug\LAB_3_SADCHIKOV.Properties.Resources.resources
 C:\Users\Hp\Desktop\ASTU\Технология программирования (6 семестр)\LAB_3_SADCHIKOV\LAB_3_SADCHIKOV\obj\Debug\LAB_3_SADCHIKOV.csproj.GenerateResource.cache
