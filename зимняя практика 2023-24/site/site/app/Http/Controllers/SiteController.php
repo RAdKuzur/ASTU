@@ -17,7 +17,14 @@ use App\Models;
 // база данных testdb
 class SiteController extends Controller
 {
+    public function test()
+    {
+        $client = new Client();
+        $response = $client->request('GET', '127.0.0.1:8001/api/test');
 
+        $data = json_decode($response->getBody(), true);
+        dd($data);
+    }
     public function auto_run()
     {
         // функция автоматического изменения статуса рейсов
