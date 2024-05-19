@@ -28,20 +28,8 @@ class SiteController extends Controller
     public function auto_run()
     {
         // функция автоматического изменения статуса рейсов
-        $tickets = DB::table('runs')->get();
-        foreach ($tickets as $ticket) {
-            $arr_time = strtotime($ticket->arrival_time);
-            $dep_time = strtotime($ticket->departure_time);
-            if($arr_time > time() && $dep_time < time()){
-                DB::table('runs')->where('id', $ticket->id)->update(['status' => 1]);
-            }
-            if($arr_time < time() && $dep_time < time()){
-                DB::table('runs')->where('id', $ticket->id)->update(['status' => 2]);
-            }
-            if($arr_time > time() && $dep_time > time()){
-                DB::table('runs')->where('id', $ticket->id)->update(['status' => 0]);
-            }
-        }
+        $client = new Client();
+        $response = $client->request('GET', '127.0.0.1:8001/api/auto');
     }
     public function login_show(){
         return view('login');
@@ -261,29 +249,22 @@ class SiteController extends Controller
            return redirect('/purchase');
         }
         $login_id = session('login');
-        $users = DB::table('customers')->where('id', $login_id)->first();
-        $ticket = DB::table('tickets')->where('id', $code)->first();
-        if($users->password == $password && $ticket != null) {
-            if($ticket->customer_id == $login_id) {
-                $seat = DB::table('tickets')->where('id', $code)->first();
-                DB::table('seat_runs')->where('id', $seat->seat_run_id)->update(['flag' => 0]);
-                DB::table('tickets')->where('id', $code)->delete();
-            }
-        }
+        $client = new Client();
+        $response = $client->request('POST', '127.0.0.1:8001/api/cancelling_post', [
+            'json' => [
+                'login_id' => $login_id,
+                'code' => $code,
+                'password' => $password
+            ]
+        ]);
         return redirect('/purchase/cancelling');
     }
     public function schedule(){
         $this->auto_run();
-        $runs = DB::table('runs')
-            ->join('routes', 'runs.route_id', '=', 'routes.id')
-            ->join('buses', 'runs.bus_id', '=', 'buses.id')
-            ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
-            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
-            ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
-            ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
-            ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
-                'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
-            ->get();
+        $client = new Client();
+        $response = $client->request('GET', '127.0.0.1:8001/api/schedule');
+        $data = json_decode($response->getBody(), true);
+        $runs = $data['runs'];
         return view('schedule')->with(['runs' => $runs]);
     }
     public function run()
@@ -291,29 +272,22 @@ class SiteController extends Controller
         $this->auto_run();
         if(session('login')!=null  && session('role') == 1) {
             $login_id = session('login');
-            $query = DB::table('customers')->where('id', $login_id)->first();
-            if ($query->role != 0) {
-                $routes = DB::table('routes')
-                    ->join('cities as departure', DB::raw('CAST(routes.departure_city_id AS bigint)'), '=', 'departure.id')
-                    ->join('cities as arrival', DB::raw('CAST(routes.arrival_city_id AS bigint)'), '=', 'arrival.id')
-                    ->select('routes.*', 'departure.name as departure_city', 'arrival.name as arrival_city')
-                    ->get();
-                $carriers = DB::table('carriers')->get();
-                $runs = DB::table('runs')
-                    ->join('routes', 'runs.route_id', '=', 'routes.id')
-                    ->join('buses', 'runs.bus_id', '=', 'buses.id')
-                    ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
-                    ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
-                    ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
-                    ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
-                    ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
-                        'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city', 'runs.id as run_id')
-                    ->get();
-                $buses = DB::table('buses')
-                    ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
-                    ->select('buses.id', 'model_buses.brand', 'model_buses.model',
-                        'buses.number', 'buses.seats', 'buses.status')
-                    ->get();
+            $client = new Client();
+            $response = $client->request('GET', '127.0.0.1:8001/api/run_auth', [
+                    'json' => [
+                        'login_id' => $login_id,
+                    ]
+                ]
+            );
+            $data = json_decode($response->getBody(), true);
+            $query = $data['query'];
+            if ($query['role'] != 0) {
+                $response = $client->request('GET', '127.0.0.1:8001/api/run');
+                $data = json_decode($response->getBody(), true);
+                $runs = $data['runs'];
+                $carriers = $data['carriers'];
+                $buses = $data['buses'];
+                $routes = $data['routes'];
                 return view('run')->with([
                     'carriers' => $carriers,
                     'buses' => $buses,
@@ -386,19 +360,15 @@ class SiteController extends Controller
             $second_counter = 1;
             $third_counter = 1;
             $fourth_counter = 1;
-            $routes = DB::table('routes')
-                ->join('cities as departure_city', 'routes.departure_city_id', '=', 'departure_city.id')
-                ->join('cities as arrival_city', 'routes.arrival_city_id', '=', 'arrival_city.id')
-                ->select('routes.*', 'departure_city.name as departure_city_name', 'arrival_city.name as arrival_city_name')
-                ->get();
-            $cities = DB::table('cities')->get();
-            $model_buses = DB::table('model_buses')->get();
-            $carriers = DB::table('carriers')->get();
-            $buses_all = DB::table('buses')
-                ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
-                ->select('model_buses.brand', 'model_buses.model', 'buses.number', 'buses.seats', 'buses.status')
-                ->get();
-            $customers = DB::table('customers')->get();
+            $client = new Client();
+            $response = $client->request('GET', '127.0.0.1:8001/api/other');
+            $data = json_decode($response->getBody(), true);
+            $cities = $data['cities'];
+            $buses_all = $data['buses_all'];
+            $model_buses = $data['model_buses'];
+            $carriers = $data['carriers'];
+            $routes = $data['routes'];
+            $customers = $data['customers'];
             return view("other")->with([
                 'cities' => $cities, 'first_counter' => $first_counter,
                 'buses' => $buses_all, 'second_counter' => $second_counter,
@@ -472,10 +442,10 @@ class SiteController extends Controller
     public function comment()
     {
         $counter = 1;
-        $comments = DB::table('comments')
-            ->join('customers', 'comments.customer_id', '=', 'customers.id')
-            ->select('comments.*', 'customers.surname', 'customers.name', 'customers.email')
-            ->get();
+        $client = new Client();
+        $response = $client->request('GET', '127.0.0.1:8001/api/comment');
+        $data = json_decode($response->getBody(), true);
+        $comments = $data['comments'];
         return view('comment')->with(['comments' => $comments, 'counter' => $counter]);
     }
 }

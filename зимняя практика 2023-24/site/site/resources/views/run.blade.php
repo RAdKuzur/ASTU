@@ -49,21 +49,21 @@
             <tbody>
             @foreach($runs as $run)
                 <tr>
-                    <td>{{$run->departure_city}}---{{$run->arrival_city}}</td>
-                    <td>{{$run->brand}} {{$run->model}} {{$run->number}}</td>
-                    <td>{{$run->name}}</td>
-                    <td>{{$run->departure_time}}</td>
-                    <td>{{$run->arrival_time}}</td>
-                    @if($run->status == "0")
+                    <td>{{$run['departure_city']}}---{{$run['arrival_city']}}</td>
+                    <td>{{$run['brand']}} {{$run['model']}} {{$run['number']}}</td>
+                    <td>{{$run['name']}}</td>
+                    <td>{{$run['departure_time']}}</td>
+                    <td>{{$run['arrival_time']}}</td>
+                    @if($run['status'] == "0")
                         <td>Рейс запланирован</td>
                     @endif
-                    @if($run->status == "1")
+                    @if($run['status'] == "1")
                         <td>В пути</td>
                     @endif
-                    @if($run->status == "2")
+                    @if($run['status'] == "2")
                         <td>Рейс завершён</td>
                     @endif
-                    <td><button type="submit" class="btn btn-danger" name = "delete" value= "{{$run->run_id}}">Удалить</button></td>
+                    <td><button type="submit" class="btn btn-danger" name = "delete" value= "{{$run['run_id']}}">Удалить</button></td>
                 </tr>
             @endforeach
             </tbody>
@@ -79,7 +79,7 @@
             <select class="form-select" aria-label="Выберите автобус" id = "select-box" name = "carrier">
                 <option selected>Выберите перевозчика</option>
                 @foreach($carriers as $carrier)
-                    <option value="{{$carrier->id}}">{{$carrier->name}}</option>
+                    <option value="{{$carrier['id']}}">{{$carrier['name']}}</option>
                 @endforeach
             </select>
             </br>
@@ -87,8 +87,8 @@
             <select class="form-select" aria-label="Выберите автобус" id = "select-box" name = "bus">
                 <option selected>Выберите автобус</option>
                 @foreach($buses as $bus)
-                    @if($bus->status != 2)
-                    <option value="{{$bus->id}}">{{$bus->brand}}  {{$bus->brand}}  {{$bus->number}}</option>
+                    @if($bus['status'] != 2)
+                    <option value="{{$bus['id']}}">{{$bus['brand']}}  {{$bus['model']}}  {{$bus['number']}}</option>
                     @endif
                 @endforeach
             </select>
@@ -97,7 +97,7 @@
             <select class="form-select" aria-label="Выберите автобус" id = "select-box" name = "route">
                 <option selected>Выберите маршрут</option>
                 @foreach($routes as $route)
-                    <option value="{{$route->id}}">{{$route->departure_city}}  ---  {{$route->arrival_city}}</option>
+                    <option value="{{$route['id']}}">{{$route['departure_city']}}  ---  {{$route['arrival_city']}}</option>
                 @endforeach
             </select>
             </br>

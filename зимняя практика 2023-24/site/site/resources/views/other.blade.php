@@ -50,7 +50,7 @@
             @foreach($cities as $city)
             <tr>
                 <td>{{$first_counter++}}</td>
-                <td>{{$city->name}}</td>
+                <td>{{$city['name']}}</td>
                 <td>
             </tr>
             @endforeach
@@ -67,7 +67,7 @@
             <select class="form-select" aria-label="Выберите автобус" id = "select-box" name = "bus">
                 <option selected>Выберите автобус</option>
                 @foreach($model_buses as $m_bus)
-                    <option value="{{$m_bus->id}}">{{$m_bus->brand}}  {{$m_bus->model}}</option>
+                    <option value="{{$m_bus['id']}}">{{$m_bus['brand']}}  {{$m_bus['model']}}</option>
                 @endforeach
             </select>
             </br>  </br>
@@ -98,10 +98,10 @@
             @foreach($buses as $bus)
                 <tr>
                     <td>{{$second_counter++}}</td>
-                    <td>{{$bus->brand}}  {{$bus->model}}</td>
-                    <td>{{$bus->number}}</td>
-                    <td>{{$bus->seats}}</td>
-                    @if($bus->status == 1)
+                    <td>{{$bus['brand']}}  {{$bus['model']}}</td>
+                    <td>{{$bus['number']}}</td>
+                    <td>{{$bus['seats']}}</td>
+                    @if($bus['status'] == 1)
                         <td>Готов к эксплуатации</td>
                     @else
                         <td>В ремонте/нуждается в ремонте</td>
@@ -134,7 +134,7 @@
             @foreach($carriers as $carrier)
                 <tr>
                     <td>{{$third_counter++}}</td>
-                    <td>{{$carrier->name}}</td>
+                    <td>{{$carrier['name']}}</td>
                     <td>
                 </tr>
             @endforeach
@@ -152,7 +152,7 @@
             <select class="form-select" aria-label="Выберите город" id = "select-box" name = "city_1">
                 <option selected>Выберите город отправления</option>
                 @foreach($cities as $city)
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    <option value="{{$city['id']}}">{{$city['name']}}</option>
                 @endforeach
             </select>
             </br>
@@ -160,7 +160,7 @@
             <select class="form-select" aria-label="Выберите город" id = "select-box" name = "city_2">
                 <option selected>Выберите город прибытия</option>
                 @foreach($cities as $city)
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    <option value="{{$city['id']}}">{{$city['name']}}</option>
                 @endforeach
             </select>
             </br>  </br>
@@ -176,8 +176,8 @@
                 <tbody>
                 @foreach($routes as $route)
                     <tr>
-                        <td>{{$route->departure_city_name}}</td>
-                        <td>{{$route->arrival_city_name}}</td>
+                        <td>{{$route['departure_city_name']}}</td>
+                        <td>{{$route['arrival_city_name']}}</td>
                         <td>
                     </tr>
                 @endforeach
@@ -236,12 +236,12 @@
             @foreach($customers as $customer)
                 <tr>
                     <td>{{$fourth_counter++}}</td>
-                    <td>{{$customer->email}}</td>
-                    <td>{{$customer->password}}</td>
-                    <td>{{$customer->name}}</td>
-                    <td>{{$customer->surname}}</td>
-                    <td>{{$customer->passport_series}}  {{$customer->passport_number}}</td>
-                    @if($customer->role == 0)
+                    <td>{{$customer['email']}}</td>
+                    <td>{{$customer['password']}}</td>
+                    <td>{{$customer['name']}}</td>
+                    <td>{{$customer['surname']}}</td>
+                    <td>{{$customer['passport_series']}}  {{$customer['passport_number']}}</td>
+                    @if($customer['role'] == 0)
                         <td>Клиент</td>
                     @else
                         <td>Сотрудник</td>

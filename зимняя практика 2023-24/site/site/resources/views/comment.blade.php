@@ -46,10 +46,9 @@
                 @foreach($comments as $comment)
                     <tr>
                         <td>{{$counter++}}</td>
-                        <td>{{$comment->name}}  {{$comment->surname}}</td>
-                        <td>{{$comment->email}} </td>
-                        <td>{{$comment->comment}}</td>
-
+                        <td>{{$comment['name']}}  {{$comment['surname']}}</td>
+                        <td>{{$comment['email']}} </td>
+                        <td>{{$comment['comment']}}</td>
                     </tr>
                 @endforeach
             @endif

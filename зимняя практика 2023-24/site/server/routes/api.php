@@ -17,6 +17,7 @@ use App\Http\Controllers\SiteController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get('/test',  [SiteController::class, 'test'])->name('test');
 Route::post('/login',  [SiteController::class, 'login'])->name('login');
 Route::get('/profile',  [SiteController::class, 'profile'])->name('profile');
@@ -31,3 +32,16 @@ Route::post('/booking',  [SiteController::class, 'booking_post'])->name('booking
 
 Route::get('/booking_id',  [SiteController::class, 'booking_id'])->name('booking_id');
 Route::post('/booking_id_post',  [SiteController::class, 'booking_id_post'])->name('booking_id_post');
+
+Route::post('/cancelling_post',  [SiteController::class, 'cancelling_post'])->name('cancelling_post');
+
+Route::get('/schedule',  [SiteController::class, 'schedule'])->name('schedule');
+
+Route::get('/run_auth',  [SiteController::class, 'run_auth'])->name('run_auth');
+Route::get('/run',  [SiteController::class, 'run'])->name('run');
+
+Route::get('/comment',  [SiteController::class, 'comment'])->name('comment');
+
+Route::get('/other',  [SiteController::class, 'other'])->name('other');
+
+Route::get('/auto',  [SiteController::class, 'auto_run'])->name('auto_run');

@@ -139,5 +139,108 @@ class SiteController extends Controller
             'code' => $login
         ]);
     }
-
+    public function cancelling_post(Request $request)
+    {
+        $login_id = $request->input('login_id');
+        $code = $request->input('code');
+        $password = $request->input('password');
+        $users = DB::table('customers')->where('id', $login_id)->first();
+        $ticket = DB::table('tickets')->where('id', $code)->first();
+        if($users->password == $password && $ticket != null) {
+            if($ticket->customer_id == $login_id) {
+                $seat = DB::table('tickets')->where('id', $code)->first();
+                DB::table('seat_runs')->where('id', $seat->seat_run_id)->update(['flag' => 0]);
+                DB::table('tickets')->where('id', $code)->delete();
+            }
+        }
+    }
+    public function schedule(Request $request){
+        $runs = DB::table('runs')
+            ->join('routes', 'runs.route_id', '=', 'routes.id')
+            ->join('buses', 'runs.bus_id', '=', 'buses.id')
+            ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
+            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+            ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
+            ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
+            ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
+                'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
+            ->get();
+        return response()->json(['runs' => $runs]);
+    }
+    public function run_auth(Request $request)
+    {
+        $login_id = $request->input('login_id');
+        $query = DB::table('customers')->where('id', $login_id)->first();
+        return response()->json(['query' => $query]);
+    }
+    public function run(Request $request)
+    {
+        $routes = DB::table('routes')
+            ->join('cities as departure', DB::raw('CAST(routes.departure_city_id AS bigint)'), '=', 'departure.id')
+            ->join('cities as arrival', DB::raw('CAST(routes.arrival_city_id AS bigint)'), '=', 'arrival.id')
+            ->select('routes.*', 'departure.name as departure_city', 'arrival.name as arrival_city')
+            ->get();
+        $carriers = DB::table('carriers')->get();
+        $runs = DB::table('runs')
+            ->join('routes', 'runs.route_id', '=', 'routes.id')
+            ->join('buses', 'runs.bus_id', '=', 'buses.id')
+            ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
+            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+            ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
+            ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
+            ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
+                'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city', 'runs.id as run_id')
+            ->get();
+        $buses = DB::table('buses')
+            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+            ->select('buses.id', 'model_buses.brand', 'model_buses.model',
+                'buses.number', 'buses.seats', 'buses.status')
+            ->get();
+        return response()->json(['routes' => $routes, 'carriers' => $carriers, 'runs' => $runs, 'buses' => $buses]);
+    }
+    public function other()
+    {
+        $routes = DB::table('routes')
+            ->join('cities as departure_city', 'routes.departure_city_id', '=', 'departure_city.id')
+            ->join('cities as arrival_city', 'routes.arrival_city_id', '=', 'arrival_city.id')
+            ->select('routes.*', 'departure_city.name as departure_city_name', 'arrival_city.name as arrival_city_name')
+            ->get();
+        $cities = DB::table('cities')->get();
+        $model_buses = DB::table('model_buses')->get();
+        $carriers = DB::table('carriers')->get();
+        $buses_all = DB::table('buses')
+            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+            ->select('model_buses.brand', 'model_buses.model', 'buses.number', 'buses.seats', 'buses.status')
+            ->get();
+        $customers = DB::table('customers')->get();
+        return response()->json(['routes' => $routes, 'carriers' => $carriers,
+                                 'cities' => $cities, 'model_buses' => $model_buses,
+                                 'buses_all' => $buses_all, 'customers' => $customers
+        ]);
+    }
+    public function comment()
+    {
+        $comments = DB::table('comments')
+            ->join('customers', 'comments.customer_id', '=', 'customers.id')
+            ->select('comments.*', 'customers.surname', 'customers.name', 'customers.email')
+            ->get();
+        return response()->json(['comments' => $comments]);
+    }
+    public function auto_run()
+    {
+        $tickets = DB::table('runs')->get();
+        foreach ($tickets as $ticket) {
+            $arr_time = strtotime($ticket->arrival_time);
+            $dep_time = strtotime($ticket->departure_time);
+            if($arr_time > time() && $dep_time < time()){
+                DB::table('runs')->where('id', $ticket->id)->update(['status' => 1]);
+            }
+            if($arr_time < time() && $dep_time < time()){
+                DB::table('runs')->where('id', $ticket->id)->update(['status' => 2]);
+            }
+            if($arr_time > time() && $dep_time > time()){
+                DB::table('runs')->where('id', $ticket->id)->update(['status' => 0]);
+            }
+        }
+    }
 }
