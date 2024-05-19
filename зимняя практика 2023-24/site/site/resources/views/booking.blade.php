@@ -35,13 +35,13 @@
             <select class="form-select" aria-label="Default select example" id = "select-box" name = "city_1">
                 <option selected>Выберите город отправления</option>
                 @foreach($cities as $city)
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    <option value="{{$city['id']}}">{{$city['name']}}</option>
                 @endforeach
             </select>
             <select class="form-select" aria-label="Default select example" id = "select-box" name = "city_2">
                 <option selected>Выберите город назначения</option>
                 @foreach($cities as $city)
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    <option value="{{$city['id']}}">{{$city['name']}}</option>
                 @endforeach
 
             </select>
@@ -66,18 +66,18 @@
                     <tbody>
                     @foreach($runs_all as $run)
                         <tr>
-                            <td>{{$run->departure_city}}---{{$run->arrival_city}}</td>
-                            <td>{{$run->brand}} {{$run->model}} {{$run->number}}</td>
-                            <td>{{$run->name}}</td>
-                            <td>{{$run->departure_time}}</td>
-                            <td>{{$run->arrival_time}}</td>
-                            @if($run->status == "0")
+                            <td>{{$run['departure_city']}}---{{$run['arrival_city']}}</td>
+                            <td>{{$run['brand']}} {{$run['model']}} {{$run['number']}}</td>
+                            <td>{{$run['name']}}</td>
+                            <td>{{$run['departure_time']}}</td>
+                            <td>{{$run['arrival_time']}}</td>
+                            @if($run['status'] == "0")
                                 <td>Рейс запланирован</td>
                             @endif
-                            @if($run->status == "1")
+                            @if($run['status'] == "1")
                                 <td>В пути</td>
                             @endif
-                            @if($run->status == "2")
+                            @if($run['status'] == "2")
                                 <td>Рейс завершён</td>
                             @endif
                         </tr>
@@ -100,12 +100,12 @@
                 <tbody>
                 @if ($runs != null)
                 @foreach($runs as $run)
-                    @if($run->status == 0)
+                    @if($run['status'] == 0)
                     <tr>
                         <th scope="row"></th>
-                        <td>{{$run->departure_time}}</td>
-                        <td>{{$run->arrival_time}}</td>
-                        <td><a href="/purchase/booking/{{$run->id}}">
+                        <td>{{$run['departure_time']}}</td>
+                        <td>{{$run['arrival_time']}}</td>
+                        <td><a href="/purchase/booking/{{$run['id']}}">
                 <button type="button" class="btn btn-primary">Забронировать место</button>
                 </a></td>
                     </tr>

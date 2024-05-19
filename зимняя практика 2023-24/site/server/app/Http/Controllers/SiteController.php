@@ -23,4 +23,121 @@ class SiteController extends Controller
 
         return response()->json(['message' => 'Пользователь создан', 'data' => $data]);
     }
+    public function login(Request $request)
+    {
+        $login = $request->input('login');
+        $users = DB::table('customers')->where('email', $login)->first();
+        return response()->json(['data' => $users]);
+    }
+    public function profile(Request $request){
+        $login_id = $request->input('login_id');
+        $login_query = DB::table('customers')->where('id', $login_id)->first();
+        $results = DB::table('tickets')
+            ->join('seat_runs', 'tickets.seat_run_id', '=', 'seat_runs.id')
+            ->join('runs', 'seat_runs.run_id', '=', 'runs.id')
+            ->join('routes', 'runs.route_id', '=', 'routes.id')
+            ->join('cities as departure_city', 'routes.departure_city_id', '=', 'departure_city.id')
+            ->join('cities as arrival_city', 'routes.arrival_city_id', '=', 'arrival_city.id')
+            ->join('seats', 'seat_runs.seat_id', '=', 'seats.id')
+            ->join('buses', 'seats.bus_id', '=', 'buses.id')
+            ->join('model_buses', 'buses.id', '=', 'model_buses.id')
+            ->select('tickets.id', 'tickets.customer_id as id_customer' ,
+                'runs.departure_time', "runs.arrival_time" , 'seats.number','seat_runs.customer_id',
+                'seat_runs.price',
+                'departure_city.name as departure_city_name', 'arrival_city.name as arrival_city_name', 'model_buses.brand' ,
+                'model_buses.model', 'buses.number as reg_number')->get();
+        $bookings = $results->where('id_customer',$login_id);
+        return response()->json(['login_query' => $login_query, 'bookings' => $bookings]);
+    }
+    public function register_get(Request $request)
+    {
+        $login = $request->input('login');
+        $users = DB::table('customers')->where('email', $login)->first();
+        return response()->json(['users' => $users]);
+    }
+    public function register_post(Request $request)
+    {
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+        $serial = $request->input('serial');
+        $number = $request->input('number');
+        $login = $request->input('email');
+        $password = $request->input('password');
+        DB::table('customers')->insert(['email' => $login, 'password' => $password,
+            'name' => $name, 'surname' => $surname, 'passport_series' => $serial,
+            'passport_number' => $number, 'role' => 0]);
+    }
+    public function contacts_post(Request $request)
+    {
+        $login_id = $request->input('login_id');
+        DB::table('comments')->insert(['comment' => $request->input('comment'), 'customer_id' => $login_id]);
+    }
+    public function booking()
+    {
+        $cities = DB::table('cities')->get();
+        $runs_all = DB::table('runs')
+            ->join('routes', 'runs.route_id', '=', 'routes.id')
+            ->join('buses', 'runs.bus_id', '=', 'buses.id')
+            ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
+            ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+            ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
+            ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
+            ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
+                'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
+            ->get();
+        return response()->json(['cities' => $cities, 'runs_all' => $runs_all]);
+    }
+    public function booking_post(Request $request)
+    {
+        $departure_city = $request->input('dep');
+        $arrive_city = $request->input('arr');
+        $cities = DB::table('cities')->get();
+        $route = DB::table('routes')->where('departure_city_id', $departure_city)
+            ->where('arrival_city_id', $arrive_city)->first();
+        if ($route != null) {
+            $route_id = $route->id;
+            $runs_all = DB::table('runs')
+                ->join('routes', 'runs.route_id', '=', 'routes.id')
+                ->join('buses', 'runs.bus_id', '=', 'buses.id')
+                ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
+                ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
+                ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
+                ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
+                ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
+                    'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
+                ->get();
+            $runs = DB::table('runs')->where('route_id', $route_id)->get();
+        }
+        return response()->json(['cities' => $cities, 'runs_all' => $runs_all, 'runs' => $runs]);
+    }
+    public function booking_id(Request $request)
+    {
+        $id = $request->input('id');
+        $seats_all = DB::table('seats')
+            ->join('seat_runs', 'seats.id', '=', 'seat_runs.seat_id')
+            ->select('seats.*', 'seat_runs.*')
+            ->get();
+        $empty_seats = $seats_all->where('run_id', $id)->where('flag', 0);
+        return response()->json(['empty_seats' => $empty_seats]);
+    }
+    public function booking_id_post(Request $request)
+    {
+        $id = $request->input('id');
+        $login = $request->input('login');
+        $seat = $request->input('seat');
+        $seats_all = DB::table('seats')
+            ->join('seat_runs', 'seats.id', '=', 'seat_runs.seat_id')
+            ->select('seats.*', 'seat_runs.*')
+            ->get();
+        $empty_seats = $seats_all->where('run_id', $id)
+            ->where('number', $seat)
+            ->where('flag', 0)->first();
+        DB::table('seat_runs')->where('id', $empty_seats->id)->update(['flag' => 1]);
+        DB::table('tickets')->insert(['seat_run_id' => $empty_seats->id,
+            'carrier_id' => 0,
+            'customer_id' => $login,
+            'code' => $login
+        ]);
+    }
+
 }

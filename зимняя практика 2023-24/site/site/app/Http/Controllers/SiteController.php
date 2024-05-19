@@ -23,7 +23,7 @@ class SiteController extends Controller
         $response = $client->request('GET', '127.0.0.1:8001/api/test');
 
         $data = json_decode($response->getBody(), true);
-        dd($data);
+        dd($data['data']);
     }
     public function auto_run()
     {
@@ -47,18 +47,26 @@ class SiteController extends Controller
         return view('login');
     }
     public function login_post(Request $request){
+        $client = new Client();
         $login = $request->email;
         $password = $request->password;
-        $users = DB::table('customers')->where('email', $login)->first();
+        $response = $client->request('POST', '127.0.0.1:8001/api/login', [
+            'json' => [
+                'login' => $login,
+                'password' => $password
+            ]
+        ]);
+        $users = json_decode($response->getBody(), true);
+        $users = $users['data'];
         if ($users == null){
             return redirect('/login');
         }
-        if($users->password == $password) {
-            if($users->role == 0) {
-                session(['key' => 'auth', 'login' => $users->id, 'role' => 0]);
+        if($users['password'] == $password) {
+            if($users['role'] == 0) {
+                session(['key' => 'auth', 'login' => $users['id'], 'role' => 0]);
             }
             else {
-                session(['key' => 'auth', 'login' => $users->id, 'role' => 1]);
+                session(['key' => 'auth', 'login' => $users['id'], 'role' => 1]);
             }
             return redirect('/main');
         }
@@ -67,28 +75,16 @@ class SiteController extends Controller
         }
     }
     public function profile(){
+        $client = new Client();
         $login_id = session('login');
-        $login_query = DB::table('customers')->where('id', $login_id)->first();
-        $results = DB::table('seats')
-            ->join('seat_runs', 'seats.id', '=', 'seat_runs.seat_id')
-            ->join('tickets', 'seat_runs.id', '=', 'tickets.seat_run_id')
-            ->select('seats.*', 'seat_runs.*', 'tickets.*')
-            ->get();
-        $results = DB::table('tickets')
-            ->join('seat_runs', 'tickets.seat_run_id', '=', 'seat_runs.id')
-            ->join('runs', 'seat_runs.run_id', '=', 'runs.id')
-            ->join('routes', 'runs.route_id', '=', 'routes.id')
-            ->join('cities as departure_city', 'routes.departure_city_id', '=', 'departure_city.id')
-            ->join('cities as arrival_city', 'routes.arrival_city_id', '=', 'arrival_city.id')
-            ->join('seats', 'seat_runs.seat_id', '=', 'seats.id')
-            ->join('buses', 'seats.bus_id', '=', 'buses.id')
-            ->join('model_buses', 'buses.id', '=', 'model_buses.id')
-            ->select('tickets.id', 'tickets.customer_id as id_customer' ,
-                'runs.departure_time', "runs.arrival_time" , 'seats.number','seat_runs.customer_id',
-                'seat_runs.price',
-                'departure_city.name as departure_city_name', 'arrival_city.name as arrival_city_name', 'model_buses.brand' ,
-                'model_buses.model', 'buses.number as reg_number')->get();
-        $bookings = $results->where('id_customer',$login_id);
+        $response = $client->request('GET', '127.0.0.1:8001/api/profile', [
+            'json' => [
+                'login_id' => $login_id
+            ]
+        ]);
+        $data = json_decode($response->getBody(), true);
+        $login_query = $data['login_query'];
+        $bookings = $data['bookings'];
         if($login_query != null) {
             return view('profile')->with(['login_query' => $login_query, 'bookings' => $bookings]);
         }
@@ -111,14 +107,29 @@ class SiteController extends Controller
         $number = $request->number;
         $login = $request->email;
         $password = $request->password;
-        $users = DB::table('customers')->where('email', $login)->first();
+        $client = new Client();
+        $response = $client->request('GET', '127.0.0.1:8001/api/register_get', [
+            'json' => [
+                'login' => $login
+            ]
+        ]);
+        $data = json_decode($response->getBody(), true);
+        $users = $data['users'];
+
         if ($users == null){
-            DB::table('customers')->insert(['email' => $login, 'password' => $password,
-                'name' => $name, 'surname' => $surname, 'passport_series' => $serial,
-                'passport_number' => $number, 'role' => 0]);
+            $response = $client->request('POST', '127.0.0.1:8001/api/register_post', [
+                'json' => [
+                    'email' => $login,
+                    'password' => $password,
+                    'name' => $name,
+                    'surname' => $surname,
+                    'serial' => $serial,
+                    'number' => $number
+                ]
+            ]);
             return redirect('/login');
         }
-        return redirect('/login');
+        return redirect('/register');
     }
     public function main_show(){
         return view('main');
@@ -130,7 +141,13 @@ class SiteController extends Controller
         $login_id = session('login');
         if($login_id != null) {
             if ($request->comment) {
-                DB::table('comments')->insert(['comment' => $request->comment, 'customer_id' => $login_id]);
+                $client = new Client();
+                $response = $client->request('POST', '127.0.0.1:8001/api/contacts_post', [
+                    'json' => [
+                        'login_id' => $login_id,
+                        'comment' => $request->comment
+                    ]
+                ]);
             }
             return redirect('/contacts');
         }
@@ -144,19 +161,13 @@ class SiteController extends Controller
     public function booking(){
         $this->auto_run();
         if (session('login') != null) {
-            $cities = DB::table('cities')->get();
             $runs = null;
-            $runs_all = DB::table('runs')
-                ->join('routes', 'runs.route_id', '=', 'routes.id')
-                ->join('buses', 'runs.bus_id', '=', 'buses.id')
-                ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
-                ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
-                ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
-                ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
-                ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
-                    'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
-                ->get();
+            $client = new Client();
+            $response = $client->request('GET', '127.0.0.1:8001/api/booking');
+            $data = json_decode($response->getBody(), true);
 
+            $cities = $data['cities'];
+            $runs_all = $data['runs_all'];
             return view('booking')->with([
                 'cities' => $cities,
                 'runs_all' => $runs_all,
@@ -168,35 +179,25 @@ class SiteController extends Controller
         }
     }
     public function booking_post(Request $request){
-
         if(session('login') != null) {
-            $cities = DB::table('cities')->get();
             $departure_city = $request->city_1;
-            $arrive_city = $request->city_2;
+            $arrival_city = $request->city_2;
             if($departure_city == 'Выберите город отправления'
-                || $arrive_city == 'Выберите город назначения') {
-                return redirect('/purchase');
-            }
-            $route = DB::table('routes')->where('departure_city_id', $departure_city)
-                ->where('arrival_city_id', $arrive_city)->first();
-            if ($route != null) {
-                $route_id = $route->id;
-                $runs_all = DB::table('runs')
-                    ->join('routes', 'runs.route_id', '=', 'routes.id')
-                    ->join('buses', 'runs.bus_id', '=', 'buses.id')
-                    ->join('carriers', 'runs.carrier_id', '=', 'carriers.id')
-                    ->join('model_buses', 'buses.model_id', '=', 'model_buses.id')
-                    ->join('cities as departure_cities', 'routes.departure_city_id', '=', 'departure_cities.id')
-                    ->join('cities as arrival_cities', 'routes.arrival_city_id', '=', 'arrival_cities.id')
-                    ->select('runs.*', 'routes.*', 'buses.number', 'carriers.*', 'model_buses.*',
-                        'departure_cities.name as departure_city', 'arrival_cities.name as arrival_city')
-                    ->get();
-                $runs = DB::table('runs')->where('route_id', $route_id)->get();
-                return view('booking')->with(['runs' => $runs, 'cities' => $cities, 'runs_all' => $runs_all]);
-            }
-            else {
+                || $arrival_city == 'Выберите город назначения') {
                 return redirect('/purchase/booking');
             }
+            $client = new Client();
+            $response = $client->request('POST', '127.0.0.1:8001/api/booking', [
+                'json' => [
+                    'dep' => $departure_city,
+                    'arr' => $arrival_city
+                ]
+            ]);
+            $data = json_decode($response->getBody(), true);
+            $runs = $data['runs'];
+            $cities = $data['cities'];
+            $runs_all = $data['runs_all'];
+            return view('booking')->with(['runs' => $runs, 'cities' => $cities, 'runs_all' => $runs_all]);
         }
         else {
             return redirect('/login');
@@ -206,11 +207,14 @@ class SiteController extends Controller
     public function booking_id($id)
     {
         if (session('login') != null) {
-            $seats_all = DB::table('seats')
-                ->join('seat_runs', 'seats.id', '=', 'seat_runs.seat_id')
-                ->select('seats.*', 'seat_runs.*')
-                ->get();
-            $empty_seats = $seats_all->where('run_id', $id)->where('flag', 0);
+            $client = new Client();
+            $response = $client->request('GET', '127.0.0.1:8001/api/booking_id', [
+                'json' => [
+                    'id' => $id
+                ]
+            ]);
+            $data = json_decode($response->getBody(), true);
+            $empty_seats = $data['empty_seats'];
             return view('bookingId')->with(['id' => $id, 'empty_seats' => $empty_seats]);
         }
         else {
@@ -220,19 +224,13 @@ class SiteController extends Controller
     public function booking_id_post(Request $request, $id)
     {
         if (session('login') != null) {
-            $seats_all = DB::table('seats')
-                ->join('seat_runs', 'seats.id', '=', 'seat_runs.seat_id')
-                ->select('seats.*', 'seat_runs.*')
-                ->get();
-
-            $empty_seats = $seats_all->where('run_id', $id)
-                ->where('number', $request->seat)
-                ->where('flag', 0)->first();
-            DB::table('seat_runs')->where('id', $empty_seats->id)->update(['flag' => 1]);
-            DB::table('tickets')->insert(['seat_run_id' => $empty_seats->id,
-                'carrier_id' => 0,
-                'customer_id' => session('login'),
-                'code' => session('login')
+            $client = new Client();
+            $response = $client->request('POST', '127.0.0.1:8001/api/booking_id_post', [
+                'json' => [
+                    'id' => $id,
+                    'login' => session('login'),
+                    'seat' => $request->seat
+                ]
             ]);
             return redirect('/purchase/booking');
         }

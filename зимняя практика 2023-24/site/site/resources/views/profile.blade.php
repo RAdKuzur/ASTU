@@ -32,11 +32,11 @@
 <div id = "div-1">
     <div id = "div-2">
         <h1>Мой профиль:</h1></br>
-        <h3>Почта:</h3>{{$login_query->email}}
+        <h3>Почта:</h3>{{$login_query['email']}}
         <h3>Ваши персональные данные(фамилия и имя):</h3>
-        <h6>{{$login_query->surname}} {{$login_query->name}}</h6>
+        <h6>{{$login_query['surname']}} {{$login_query['name']}}</h6>
         <h3>Серия и номер паспорта:</h3>
-        <h6>{{$login_query->passport_series}} {{$login_query->passport_number}}</h6>
+        <h6>{{$login_query['passport_series']}} {{$login_query['passport_number']}}</h6>
     </div>
     <form action = "{{route('profile_post')}}" method="POST">
         @csrf
@@ -64,13 +64,13 @@
             @if ($bookings != null)
                 @foreach($bookings as $booking)
                     <tr>
-                        <td>{{$booking->id}}</td>
-                        <td>{{$booking->departure_city_name}}---{{$booking->arrival_city_name}}</td>
-                        <td>{{$booking->brand}} {{$booking->model}} {{$booking->reg_number}} </td>
-                        <td>{{$booking->number}}</td>
-                        <td>{{$login_query->surname}} {{$login_query->name}}</td>
-                        <td>{{$booking->departure_time}}  {{$booking->arrival_time}}</td>
-                        <td>{{$booking->price}}</td>
+                        <td>{{$booking['id']}}</td>
+                        <td>{{$booking['departure_city_name']}}---{{$booking['arrival_city_name']}}</td>
+                        <td>{{$booking['brand']}} {{$booking['model']}} {{$booking['reg_number']}} </td>
+                        <td>{{$booking['number']}}</td>
+                        <td>{{$login_query['surname']}} {{$login_query['name']}}</td>
+                        <td>{{$booking['departure_time']}}  {{$booking['arrival_time']}}</td>
+                        <td>{{$booking['price']}}</td>
                     </tr>
                 @endforeach
             @endif

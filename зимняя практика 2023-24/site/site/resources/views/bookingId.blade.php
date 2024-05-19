@@ -37,7 +37,7 @@
                 <div id = "selector-1">
             <select class="form-select" aria-label="Default select example"  name = "seat">
                 @foreach($empty_seats as $seats)
-                    <option selected value="{{$seats->number}}">Номер: {{$seats->number}}    Цена: {{$seats->price}} р.</option>
+                    <option selected value="{{$seats['number']}}">Номер: {{$seats['number']}}    Цена: {{$seats['price']}} р.</option>
                 @endforeach
             </select>
             <button type="submit" class="btn btn-primary" >Забронировать место</button>
