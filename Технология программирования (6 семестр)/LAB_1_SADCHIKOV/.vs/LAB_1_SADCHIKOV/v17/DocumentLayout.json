@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_1_SADCHIKOV\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{625970F9-A705-41EA-A4D5-BFC2E39B9FAC}|LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV.csproj|c:\\users\\hp\\desktop\\astu\\\u0442\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\lab_1_sadchikov\\lab_1_sadchikov\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{625970F9-A705-41EA-A4D5-BFC2E39B9FAC}|LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV.csproj|solutionrelative:lab_1_sadchikov\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625970F9-A705-41EA-A4D5-BFC2E39B9FAC}|LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV.csproj|C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_1_SADCHIKOV\\lab_1_sadchikov\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625970F9-A705-41EA-A4D5-BFC2E39B9FAC}|LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV.csproj|solutionrelative:lab_1_sadchikov\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV\\Form1.cs",
+              "RelativeDocumentMoniker": "LAB_1_SADCHIKOV\\Form1.cs",
+              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "LAB_1_SADCHIKOV\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T08:45:38.074Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV\\Program.cs",
+              "RelativeDocumentMoniker": "LAB_1_SADCHIKOV\\Program.cs",
+              "ToolTip": "C:\\Users\\Hp\\Desktop\\ASTU\\\u0422\u0435\u0445\u043D\u043E\u043B\u043E\u0433\u0438\u044F \u043F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F (6 \u0441\u0435\u043C\u0435\u0441\u0442\u0440)\\LAB_1_SADCHIKOV\\LAB_1_SADCHIKOV\\Program.cs",
+              "RelativeToolTip": "LAB_1_SADCHIKOV\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-14T08:44:26.864Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
