@@ -39,9 +39,12 @@ Route::get('/schedule',  [SiteController::class, 'schedule'])->name('schedule');
 
 Route::get('/run_auth',  [SiteController::class, 'run_auth'])->name('run_auth');
 Route::get('/run',  [SiteController::class, 'run'])->name('run');
+Route::post('/run_post',  [SiteController::class, 'run_post'])->name('run_post');
 
 Route::get('/comment',  [SiteController::class, 'comment'])->name('comment');
 
 Route::get('/other',  [SiteController::class, 'other'])->name('other');
+Route::post('/other',  [SiteController::class, 'other_post'])->name('other_post');
+
 
 Route::get('/auto',  [SiteController::class, 'auto_run'])->name('auto_run');

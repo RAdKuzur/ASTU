@@ -132,8 +132,10 @@ class SiteController extends Controller
         $empty_seats = $seats_all->where('run_id', $id)
             ->where('number', $seat)
             ->where('flag', 0)->first();
+
         DB::table('seat_runs')->where('id', $empty_seats->id)->update(['flag' => 1]);
-        DB::table('tickets')->insert(['seat_run_id' => $empty_seats->id,
+        DB::table('tickets')->insert([
+            'seat_run_id' => $empty_seats->id,
             'carrier_id' => 0,
             'customer_id' => $login,
             'code' => $login
@@ -240,6 +242,142 @@ class SiteController extends Controller
             }
             if($arr_time > time() && $dep_time > time()){
                 DB::table('runs')->where('id', $ticket->id)->update(['status' => 0]);
+            }
+        }
+    }
+    public function other_post(Request $request)
+    {
+        $request_city = $request->input('request_city');
+        $request_bus = $request->input('request_bus');
+        $request_number = $request->input('request_number');
+        $request_seats = $request->input('request_seats');
+        $request_status =  $request->input('request_status');
+        $request_carrier = $request->input('request_carrier');
+        $request_city_1 = $request->input('request_city_1');
+        $request_city_2 = $request->input('request_city_2');
+        $request_user_email = $request->input('request_user_email');
+        $request_user_password = $request->input('request_user_password');
+        $request_name = $request->input('request_name');
+        $request_surname = $request->input('request_surname');
+        $request_serial = $request->input('request_serial');
+        $request_number = $request->input('request_number');
+        if($request_city != null && DB::table('cities')->where('name', $request_city)->first() == null) {
+            DB::table('cities')->insert(['name' => $request_city]);
+        }
+
+        if($request_bus != null && $request_bus != 'Выберите автобус' && $request_number != null
+            && $request_seats != null && $request_status != null && $request_status != 'Выберите статус') {
+            if (DB::table('buses')->where('number', $request_number)->first() == null) {
+                $bus_id = DB::table('buses')->insertGetId(['model_id' => $request_bus,
+                    'number' => $request_number,
+                    'seats' => $request_seats,
+                    'status' => $request_status,
+                ]);
+                for ($i = 1; $i <= $request_seats; $i++) {
+                    DB::table('seats')->insert(['bus_id' => $bus_id, 'number' => $i]);
+                }
+            }
+        }
+        if($request_carrier != null && DB::table('carriers')
+                ->where('name', $request_carrier)->first() == null){
+            DB::table('carriers')->insert(['name' => $request_carrier]);
+        }
+        if ($request_city_1 != null && $request_city_2 != null && $request_city_1 != $request_city_2
+            && $request_city_1 != 'Выберите город отправления' && $request_city_2 != 'Выберите город прибытия'
+        ){
+
+            if(DB::table('routes')
+                    ->where('departure_city_id', $request_city_1)
+                    ->where('arrival_city_id', $request_city_2)->first() == null) {
+                DB::table('routes')->insert(['departure_city_id' => $request_city_1,
+                    'arrival_city_id' => $request_city_2]);
+            }
+        }
+        if ($request_user_email != null && $request_user_password != null && $request_name != null
+            && $request_surname != null && $request_serial != null && $request_number != null)
+        {
+            $name = $request_name;
+            $surname = $request_surname;
+            $serial = $request_serial;
+            $number = $request_number;
+            $login = $request_user_email;
+            $password = $request_user_password;
+            if(DB::table('customers')
+                    ->where('email', $login)
+                    ->first() == null) {
+                DB::table('customers')->insert([
+                    'email' => $login,
+                    'password' => $password,
+                    'name' => $name,
+                    'surname' => $surname,
+                    'passport_series' => $serial,
+                    'passport_number' => $number,
+                    'role' => 1
+                ]);
+            }
+        }
+    }
+    public function run_post(Request $request)
+    {
+        $request_delete = $request->input('request_delete');
+        $request_bus = $request->input('request_bus');
+        $request_route = $request->input('request_route');
+        $request_price = $request->input('request_price');
+        $request_carrier = $request->input('request_carrier');
+        $request_arr_time = $request->input('request_arr_time');
+        $request_dep_time = $request->input('request_dep_time');
+        $login_id = $request->input('login_id');
+
+        if ($request_delete != null) {
+            $tickets = DB::table('tickets')->get();
+            foreach ($tickets as $ticket) {
+                $ticket_id =  DB::table('seat_runs')->where('id', $ticket->seat_run_id)->first();
+                if($ticket_id->run_id == $request_delete){
+                    DB::table('tickets')->where('id',$ticket->id)->delete();
+                }
+            }
+            DB::table('seat_runs')->where('run_id', $request_delete)->delete();
+            DB::table('runs')->where('id', $request_delete)->delete();
+        }
+
+        $seat_bus = DB::table('buses')
+            ->join('seats', 'buses.id', '=', 'seats.bus_id')
+            ->select('buses.*', 'seats.*')
+            ->get();
+        $seat_bus = $seat_bus->where('bus_id', $request_bus)->first();
+
+        if($seat_bus != null && $request_price != null &&  $request_carrier != 'Выберите перевозчика'
+            && $request_route != 'Выберите маршрут' && $request_arr_time != null && $request_dep_time != null)
+        {
+
+            $seat_first_id = $seat_bus->id;
+            $price = $request_price;
+            $date_time_obj_arr = DateTime::createFromFormat('Y-m-d\TH:i', $request_arr_time);
+            $date_time_obj_dep = DateTime::createFromFormat('Y-m-d\TH:i', $request_dep_time);
+            $sql_date_arr = $date_time_obj_arr->format('Y-m-d H:i:s');
+            $sql_date_dep = $date_time_obj_dep->format('Y-m-d H:i:s');
+            if($sql_date_dep < $sql_date_arr) {
+                $id = DB::table('runs')->insertGetId(['driver_id' => 1,
+                    'bus_id' => $request_bus,
+                    'status' => 0,
+                    'route_id' => $request_route,
+                    'carrier_id' => $request_carrier,
+                    'departure_time' => $sql_date_dep,
+                    'arrival_time' => $sql_date_arr
+                ]);
+
+                $seat = DB::table('buses')->where('id', $request_bus)->first('seats');
+                for ($i = 1; $i <= $seat->seats; $i++) {
+                    DB::table('seat_runs')->insert([
+                        'seat_id' => $seat_first_id,
+                        'run_id' => $id,
+                        'customer_id' => $login_id,
+                        'flag' => 0,
+                        'price' => $price
+                    ]);
+                    $seat_first_id++;
+                }
+
             }
         }
     }
