@@ -15,8 +15,19 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models;
 // база данных testdb
-class SiteController extends Controller
+class SiteController
 {
+    public function error($type)
+    {
+        $error = "";
+        if($type == 1){
+            $error = "Ошибка регистрации. Введите все данные.";
+        }
+        if($type == 2){
+            $error = "Ошибка авторизации. Неправильный логин или пароль.";
+        }
+        return view('error')->with('error', $error);
+    }
     public function test()
     {
         $client = new Client();
@@ -47,6 +58,7 @@ class SiteController extends Controller
         $users = json_decode($response->getBody(), true);
         $users = $users['data'];
         if ($users == null){
+
             return redirect('/login');
         }
         if($users['password'] == $password) {
@@ -59,7 +71,7 @@ class SiteController extends Controller
             return redirect('/main');
         }
         else {
-            return redirect('/login');
+            return redirect('/error/2');
         }
     }
     public function profile(){
@@ -95,6 +107,11 @@ class SiteController extends Controller
         $number = $request->number;
         $login = $request->email;
         $password = $request->password;
+        if($name == null || $password == null || $surname == null ||
+            $serial == null || $number == null || $login == null)
+        {
+            return redirect('/error/1');
+        }
         $client = new Client();
         $response = $client->request('GET', '127.0.0.1:8001/api/register_get', [
             'json' => [

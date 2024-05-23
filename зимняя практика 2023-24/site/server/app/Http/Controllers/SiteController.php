@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models;
 // база данных testdb
-class SiteController extends Controller
+class SiteController
 {
     public function test(Request $request)
     {

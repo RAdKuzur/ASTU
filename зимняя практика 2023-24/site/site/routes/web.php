@@ -16,6 +16,7 @@ use App\Http\Controllers\SiteController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/error/{type}',  [SiteController::class, 'error'])->name('error');
 Route::get('/test',  [SiteController::class, 'test'])->name('test');
 
 Route::get('/login',  [SiteController::class, 'login_show'])->name('login');
