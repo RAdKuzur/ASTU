@@ -57,22 +57,24 @@ namespace Lab2.Controllers
         public ActionResult Edit(int id)
         {
             var exhibit = _exhibitRepository.Get(id);
-            return View(exhibit);
+            var museums = _museumRepository.GetAll();
+            ViewBag.Museums = new SelectList(museums, "Id", "Name");
+            return View();
         }
         // POST: ExhibitsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Exhibit exhibit)
         {
-            try
-            {
+             try
+             {
                 _exhibitRepository.Update(exhibit);
                 return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+             }
+             catch
+             {
                 return View();
-            }
+             }
         }
 
         // GET: ExhibitsController/Delete/5

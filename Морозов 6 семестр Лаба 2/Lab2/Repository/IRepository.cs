@@ -78,6 +78,7 @@ public class ExhibitRepository : IRepository<Exhibit>
 
     public void Update(Exhibit exhibit)
     {
+
         _context.Exhibits.Update(exhibit);
         _context.SaveChanges();
     }
