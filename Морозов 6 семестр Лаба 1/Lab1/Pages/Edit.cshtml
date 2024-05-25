@@ -1,0 +1,29 @@
+﻿@page
+@model Lab1.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="text-center">
+    
+    <h1 class="display-4">Редактирование</h1>
+    <p>Редактирование</p>
+    @if (Model.flag == 1)
+    {
+        <form method="post" action="~/edit">
+            <label>Название блюда:</label><br/>
+        <input type="hidden" value="@Model.dish.Id" name="id" /><br />
+        <input type="text" value="@Model.dish.Name" name="name"/><br />
+        <label>Ингридиенты</label><br />
+        <input type="text" value="@Model.dish.Description" name="pieces" /><br />
+        <label>Инструкции</label><br />
+        <input type="text" value="@Model.dish.Type" name="type" /><br />
+        <a asp-page="/Watch">
+            <button type="submit" class="btn btn-danger">Редактировать</button>
+        </a>
+        </form>
+    }
+    else
+    {
+        <p>Страница редактирования недоступна для прямого доступа</p>
+    }
+</div>

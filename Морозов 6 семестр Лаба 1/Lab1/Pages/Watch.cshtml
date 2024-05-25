@@ -1,0 +1,45 @@
+﻿@page
+@model Lab1.Pages.WatchModel
+@{
+    ViewData["Title"] = "Watch";
+}
+@section Scripts {
+    <script type="text/javascript">
+        document.getElementById('reloadButton').onclick = function () {
+            location.reload();
+        };
+    </script>
+}
+<div class="text-center">
+    <h1 class="display-4">Просмотр</h1>
+    <p>Просмотр</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Название блюда</th>
+                    <th scope="col">Ингридиенты</th>
+                    <th scope="col">Способ приготовления</th>
+                    <th scope="col">Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+         
+                    @foreach (var dish in Model.dishes)
+                    { 
+                    <tr>
+                        <td>@dish.Name</td>
+                        <td>@dish.Description</td>
+                        <td>@dish.Type</td>
+                        <td>
+                        <form method="post" asp-page="./Edit" asp-route-id="@dish.Id">
+                            <button type="button" class="btn btn-primary" onclick="window.location.href='./Edit?id=@dish.Id'">редактировать</button>
+                        </form>
+                        <form method="post" asp-page="./Watch" asp-route-id="@dish.Id">
+                            <button type="submit" class="btn btn-danger">удалить</button>
+                        </form>
+                        </td>
+                    </tr>
+                    }
+            </tbody>
+        </table>
+</div>
