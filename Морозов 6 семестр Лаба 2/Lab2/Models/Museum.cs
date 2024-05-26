@@ -7,11 +7,9 @@ namespace Lab2.Models
         public int Id { get; set; }
         /// название
         [Required(ErrorMessage = "Поле обязательно для заполнения.")]
-        [StringLength(100, ErrorMessage = "Название не должно превышать 100 символов.")]
         public string Name { get; set; }
         /// адрес 
         [Required(ErrorMessage = "Поле обязательно для заполнения.")]
-        [StringLength(200, ErrorMessage = "Адрес не должен превышать 200 символов.")]
         public string Address { get; set; }
         /// Куратор
         [Required(ErrorMessage = "Поле обязательно для заполнения.")]

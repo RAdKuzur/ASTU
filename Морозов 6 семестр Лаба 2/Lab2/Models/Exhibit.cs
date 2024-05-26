@@ -8,11 +8,9 @@ namespace Lab2.Models
             public int Id { get; set; }
             /// название
             [Required(ErrorMessage = "Поле обязательно для заполнения.")]
-            [StringLength(100, ErrorMessage = "Название не должно превышать 100 символов.")]
             public string Name { get; set; }
             ///описание    
             [Required(ErrorMessage = "Поле обязательно для заполнения.")]
-            [StringLength(200, ErrorMessage = "Описание не должно превышать 200 символов.")]
             public string Description { get; set; }
             /// эпоха
             [Required(ErrorMessage = "Поле обязательно для заполнения.")]

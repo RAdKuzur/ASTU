@@ -13,27 +13,27 @@ namespace Lab2.Controllers
             _museumRepository = museumRepository;
         }
 
-        // GET: MuseumController
+        // GET
         public ActionResult Index()
         {
             var museums = _museumRepository.GetAll();
             return View(museums);
         }
 
-        // GET: MuseumController/Details/5
+        // GET
         public ActionResult Details(int id)
         {
             var museum = _museumRepository.Get(id);
             return View(museum);
         }
 
-        // GET: MuseumController/Create
+        // GET
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MuseumController/Create
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Museum museum)
@@ -49,14 +49,14 @@ namespace Lab2.Controllers
             }
         }
 
-        // GET: MuseumController/Edit/5
+        // GET
         public ActionResult Edit(int id)
         {
             var museum = _museumRepository.Get(id);
             return View(museum);
         }
 
-        // POST: MuseumController/Edit/5
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Museum museum)
@@ -72,14 +72,14 @@ namespace Lab2.Controllers
             }
         }
 
-        // GET: MuseumController/Delete/5
+        // GET
         public ActionResult Delete(int id)
         {
             var museum = _museumRepository.Get(id);
             return View(museum);
         }
 
-        // POST: MuseumController/Delete/5
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

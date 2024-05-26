@@ -1,7 +1,5 @@
 ﻿@model Lab2.Models.Exhibit
-
 <h2>Delete Exhibit</h2>
-
 <h3>Вы уверены, что хотите это удалить?</h3>
 <div>
     <h4>@Model.Name</h4>
@@ -9,7 +7,6 @@
     <p>@Model.Era</p>
     <p>@Model.Price</p>
 </div>
-
 <form asp-action="Delete">
     <input type="hidden" asp-for="Id" />
     <input type="submit" value="Delete" class="btn btn-danger" /> |

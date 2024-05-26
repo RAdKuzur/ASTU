@@ -15,21 +15,21 @@ namespace Lab2.Controllers
             _museumRepository = museumRepository;
         }
 
-        // GET: ExhibitsController
+        // GET
         public ActionResult Index()
         {
             var exhibits = _exhibitRepository.GetAll();
             return View(exhibits);
         }
 
-        // GET: ExhibitsController/Details/5
+        // GET
         public ActionResult Details(int id)
         {
             var exhibit = _exhibitRepository.Get(id);
             return View(exhibit);
         }
 
-        // GET: ExhibitsController/Create
+        // GET
         public ActionResult Create()
         {
             var museums = _museumRepository.GetAll();
@@ -37,7 +37,7 @@ namespace Lab2.Controllers
 
             return View();
         }
-        // POST: ExhibitsController/Create
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Exhibit exhibit)
@@ -53,7 +53,7 @@ namespace Lab2.Controllers
             }
         }
 
-        // GET: ExhibitsController/Edit/5
+        // GET
         public ActionResult Edit(int id)
         {
             var exhibit = _exhibitRepository.Get(id);
@@ -61,7 +61,7 @@ namespace Lab2.Controllers
             ViewBag.Museums = new SelectList(museums, "Id", "Name");
             return View();
         }
-        // POST: ExhibitsController/Edit/5
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Exhibit exhibit)
@@ -77,14 +77,14 @@ namespace Lab2.Controllers
              }
         }
 
-        // GET: ExhibitsController/Delete/5
+        // GET
         public ActionResult Delete(int id)
         {
             var exhibit = _exhibitRepository.Get(id);
             return View(exhibit);
         }
 
-        // POST: ExhibitsController/Delete/5
+        // POST
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
