@@ -1,2 +1,2 @@
-# ASTU
+#ASTU
 ASTU repository for students 
