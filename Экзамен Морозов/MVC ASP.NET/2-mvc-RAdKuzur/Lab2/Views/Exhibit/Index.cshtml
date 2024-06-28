@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Lab2.Models.Exhibit>
+<h2>Просмотр экспонатов</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Эпоха</th>
+            <th>Цена</th>       
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Era</td>
+                <td>@item.Price</td>
+                <td>
+                    <a href="Exhibit/Edit/@item.Id" class="btn btn-primary">Редактировать</a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" >          
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
