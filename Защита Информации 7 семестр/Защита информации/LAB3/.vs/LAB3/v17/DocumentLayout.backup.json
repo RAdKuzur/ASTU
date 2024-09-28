@@ -1,12 +1,53 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\rkuzu\\OneDrive\\Desktop\\ASTU\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\LAB3\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B2031FB9-0488-4D5E-84ED-37DC4804AC47}|LAB3\\LAB3.csproj|c:\\users\\rkuzu\\onedrive\\desktop\\astu\\\u0437\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0437\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2031FB9-0488-4D5E-84ED-37DC4804AC47}|LAB3\\LAB3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2031FB9-0488-4D5E-84ED-37DC4804AC47}|LAB3\\LAB3.csproj|c:\\users\\rkuzu\\onedrive\\desktop\\astu\\\u0437\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0437\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\lab3\\lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{B2031FB9-0488-4D5E-84ED-37DC4804AC47}|LAB3\\LAB3.csproj|solutionrelative:lab3\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\rkuzu\\OneDrive\\Desktop\\ASTU\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\LAB3\\LAB3\\Form1.cs",
+              "RelativeDocumentMoniker": "LAB3\\Form1.cs",
+              "ToolTip": "C:\\Users\\rkuzu\\OneDrive\\Desktop\\ASTU\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\LAB3\\LAB3\\Form1.cs",
+              "RelativeToolTip": "LAB3\\Form1.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T09:24:03.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
+              "DocumentMoniker": "C:\\Users\\rkuzu\\OneDrive\\Desktop\\ASTU\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\LAB3\\LAB3\\Form1.cs",
+              "RelativeDocumentMoniker": "LAB3\\Form1.cs",
+              "ToolTip": "C:\\Users\\rkuzu\\OneDrive\\Desktop\\ASTU\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 7 \u0441\u0435\u043C\u0435\u0441\u0442\u0440\\\u0417\u0430\u0449\u0438\u0442\u0430 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438\\LAB3\\LAB3\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
+              "RelativeToolTip": "LAB3\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-22T09:24:00.193Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435]"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
