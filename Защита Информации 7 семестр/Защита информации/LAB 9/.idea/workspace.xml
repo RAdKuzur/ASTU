@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc49ae3d-f6d7-4c00-bbe2-e71c987e2209" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../LAB 5/.idea/LAB 5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../LAB 5/.idea/LAB 5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LAB 5/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LAB 5/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LAB 8/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LAB 8/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LAB 8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LAB 8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LAB 8/LAB 8.py" beforeDir="false" afterPath="$PROJECT_DIR$/../LAB 8/LAB 8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAB 9.py" beforeDir="false" afterPath="$PROJECT_DIR$/LAB 9.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +24,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2npKQmNrBQ1V9KzuvK4mPPNVF1E" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,15 +34,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.LAB 9.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/rkuzu/OneDrive/Desktop/ASTU/Защита Информации 7 семестр/Защита информации/LAB 9"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
       </set>
     </attachedChunks>
   </component>
