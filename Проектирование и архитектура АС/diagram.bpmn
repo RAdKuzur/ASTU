@@ -55,7 +55,7 @@
       <bpmn:incoming>Flow_1x2uwio</bpmn:incoming>
       <bpmn:outgoing>Flow_1nkcx86</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Activity_1oj5jxg" name="Сравнение  операции с уже примененными операциями от других клиентов.">
+    <bpmn:task id="Activity_1oj5jxg" name="Сравнение  операции с примененными операциями от других клиентов.">
       <bpmn:incoming>Flow_1nkcx86</bpmn:incoming>
       <bpmn:outgoing>Flow_0fhncg8</bpmn:outgoing>
       <bpmn:property id="Property_058ke52" name="__targetRef_placeholder" />
@@ -88,7 +88,7 @@
       </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1pft2xs" sourceRef="Activity_0iw3yhe" targetRef="Activity_0fghtt1" />
-    <bpmn:task id="Activity_0fghtt1" name="Получение актуального состояния диаграммы и предыдущей версии других пользователей">
+    <bpmn:task id="Activity_0fghtt1" name="Получение актуального состояния диаграммы и версии других пользователей">
       <bpmn:incoming>Flow_0g9mrve</bpmn:incoming>
       <bpmn:incoming>Flow_1pft2xs</bpmn:incoming>
       <bpmn:outgoing>Flow_1pllwlb</bpmn:outgoing>
